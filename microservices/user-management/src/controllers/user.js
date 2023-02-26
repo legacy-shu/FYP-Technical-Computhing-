@@ -6,7 +6,7 @@ import { config } from "../../config.js";
 export async function getUser(req, res) {
   try {
     const id = req.params.id;
-    const result = await Profile.findOne({ _id: id }).populate(
+    const result = await Profile.findOne({ user: id }).populate(
       "user",
       "email role"
     );
@@ -53,10 +53,40 @@ export async function registerUser(req, res) {
   }
 }
 
-export async function updateUser(req, res, next) {
-  res.status(200).json({ message: "User Management Service" });
+export async function updateUser(req, res) {
+  try {
+    const id = req.params.id;
+    let { profile } = req.body;
+    profile = await Profile.findOneAndUpdate({ user: id }, profile, {
+      new: true,
+    }).populate("user", "email role");
+    res.status(200).json({ profile });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ err: err.message });
+  }
 }
 
-export async function removeUser(req, res, next) {
-  res.status(200).json({ message: "User Management Service" });
+export async function removeUser(req, res) {
+  try {
+    const id = req.params.id;
+    const profile = await Profile.findOne({ user: id });
+    const user = await User.findById({ _id: id });
+
+    if (!profile) {
+      return res.status(404).json({ message: `UserProfile not found: ${id}` });
+    }
+    if (!user) {
+      return res.status(404).json({ message: `User not found: ${id}` });
+    }
+
+    await Profile.findOneAndDelete({ user: id });
+    await User.findByIdAndDelete(id);
+
+    res.sendStatus(204);
+    
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ err: err.message });
+  }
 }
