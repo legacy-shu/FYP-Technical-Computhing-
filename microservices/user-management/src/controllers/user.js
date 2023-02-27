@@ -6,6 +6,9 @@ import { config } from "../../config.js";
 export async function getUser(req, res) {
   try {
     const id = req.params.id;
+    
+    await validateUserProfile(id, req, res);
+    
     const result = await Profile.findOne({ user: id }).populate(
       "user",
       "email role"
@@ -47,6 +50,7 @@ export async function registerUser(req, res) {
     res
       .status(201)
       .send({ user: savedUser, profile: savedProfile, token: token });
+
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });
@@ -56,6 +60,7 @@ export async function registerUser(req, res) {
 export async function updateUser(req, res) {
   try {
     const id = req.params.id;
+    await validateUserProfile(id, req, res);
     let { profile } = req.body;
     profile = await Profile.findOneAndUpdate({ user: id }, profile, {
       new: true,
@@ -70,21 +75,30 @@ export async function updateUser(req, res) {
 export async function removeUser(req, res) {
   try {
     const id = req.params.id;
+
+    await validateUserProfile(id, req, res);
+
+    await Profile.findOneAndDelete({ user: id });
+    await User.findByIdAndDelete(id);
+
+    res.sendStatus(204);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ err: err.message });
+  }
+}
+
+async function validateUserProfile(id, req, res) {
+  try {
     const profile = await Profile.findOne({ user: id });
     const user = await User.findById({ _id: id });
-
     if (!profile) {
       return res.status(404).json({ message: `UserProfile not found: ${id}` });
     }
     if (!user) {
       return res.status(404).json({ message: `User not found: ${id}` });
     }
-
-    await Profile.findOneAndDelete({ user: id });
-    await User.findByIdAndDelete(id);
-
-    res.sendStatus(204);
-    
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });

@@ -18,8 +18,7 @@ export const validateCredential = [
   validate,
 ];
 
-export const validateProfile = [
-  ...validateCredential,
+export const validateUpdateProfile = [
   body("profile.comapny")
     .if(body("user.role.provider").equals("true"))
     .isLength({ min: 5, max: 20 })
@@ -55,5 +54,11 @@ export const validateProfile = [
     .trim()
     .isLength({ min: 1, max: 20 })
     .withMessage("City is missing"),
+  validate,
+];
+
+export const validateRegisterProfile = [
+  ...validateCredential,
+  ...validateUpdateProfile,
   validate,
 ];

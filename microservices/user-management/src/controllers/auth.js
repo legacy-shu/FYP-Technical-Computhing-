@@ -11,15 +11,16 @@ export async function check(req, res) {
 }
 
 export async function login(req, res) {
-  const { email, password } = req.body;
-
+  const { user } = req.body;
+  const {email,password} = user;
+  
   //check exist user or not first
-  const user = await User.findOne({ email: email });
-  if (!user) {
+  const foundUser = await User.findOne({ email: email });
+  if (!foundUser) {
     return res.status(401).json({ message: "Invalid user or password" });
   }
   //check password correct or not
-  const isValidPassword = await compare(password, user.password);
+  const isValidPassword = await compare(password, foundUser.password);
   if (!isValidPassword) {
     return res.status(401).json({ message: "Invalid user or password" });
   }
