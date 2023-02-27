@@ -4,16 +4,16 @@ import * as jobPostController from "../controllers/jobPost.js";
 const router = express.Router();
 
 router.post("/", jobPostController.registerJobPost);
-router.post("/:id", jobPostController.applyJob);
+router.post("/:jobId", jobPostController.applyJob);
 
-router.get("/all", jobPostController.getAllJobs);
-router.get("/:keyword", jobPostController.getJobsWithKeyWord);
+router.get("/", jobPostController.getAllJobs);
+router.get("/search", jobPostController.searchJobPosts);
 
-router.get("/:id", jobPostController.getAjobById);
-router.get("/", jobPostController.getJobsByEmail);
+router.get("/:jobId", jobPostController.getAjobById);
+router.get("/:userId/posted", jobPostController.getJobsByUserId);
 
-router.put("/:id", jobPostController.updateJobPost);
+router.put("/:jobId", jobPostController.updateJobPost);
 
-router.delete("/:id", jobPostController.removeJobPost);
+router.delete("/:jobId", jobPostController.removeJobPost);
 
 export default router;

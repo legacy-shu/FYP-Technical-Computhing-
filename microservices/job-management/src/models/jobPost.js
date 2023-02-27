@@ -4,6 +4,7 @@ import { useVirtualId } from "../db/database.js";
 const jobPostSchema = new Schema(
   {
     description: {
+      userId: { type: String, required: true },
       title: { type: String, required: true },
       email: { type: String, required: true },
       logo: String,
@@ -25,7 +26,12 @@ const jobPostSchema = new Schema(
   },
   { timestamps: true }
 );
-
+jobPostSchema.index({
+  "description.title": "text",
+  "description.about": "text",
+  "description.responsibilities": "text",
+  "description.skills": "text",
+});
 useVirtualId(jobPostSchema);
 const JobPost = model("JobPost", jobPostSchema);
 export default JobPost;
