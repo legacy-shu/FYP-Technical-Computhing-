@@ -2,18 +2,20 @@
   "name": "api-gateway",
   "version": "1.0.0",
   "description": "API Gateway for microservices",
-  "main": "gatewayServer.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node gatewayServer.js",
-    "dev": "nodemon gatewayServer.js",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
     "test": "jest"
   },
   "author": "Wooram Jung",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0"
   }
 }

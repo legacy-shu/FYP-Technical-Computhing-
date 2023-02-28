@@ -103,9 +103,10 @@ export async function updateJobPost(req, res) {
   }
 }
 
-export async function removeJobPost(req, res, next) {
+export async function removeJobPost(req, res) {
   try {
-    const id = req.postId;
+    const id = req.params.jobId;
+    console.log(`removeJobPost${id}`);
     const deleted = await JobPost.findByIdAndDelete(id);
     if (!deleted) {
       return res.status(404).json({ message: `Job Post not found` });

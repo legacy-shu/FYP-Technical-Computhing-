@@ -6,9 +6,9 @@ import { config } from "../../config.js";
 export async function getUser(req, res) {
   try {
     const id = req.params.id;
-    
+
     await validateUserProfile(id, req, res);
-    
+
     const result = await Profile.findOne({ user: id }).populate(
       "user",
       "email role"
@@ -50,7 +50,6 @@ export async function registerUser(req, res) {
     res
       .status(201)
       .send({ user: savedUser, profile: savedProfile, token: token });
-
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });
@@ -82,7 +81,6 @@ export async function removeUser(req, res) {
     await User.findByIdAndDelete(id);
 
     res.sendStatus(204);
-
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });
