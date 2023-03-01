@@ -12,8 +12,8 @@ export async function check(req, res) {
 
 export async function login(req, res) {
   const { user } = req.body;
-  const {email,password} = user;
-  
+  const { email, password } = user;
+
   //check exist user or not first
   const foundUser = await User.findOne({ email: email });
   if (!foundUser) {
@@ -31,5 +31,5 @@ export async function login(req, res) {
     id: user.id,
   });
 
-  res.status(200).json({ token, user });
+  res.status(200).json({ token, foundUser });
 }
