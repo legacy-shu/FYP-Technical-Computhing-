@@ -17,7 +17,7 @@ export async function registerJobPost(req, res) {
     //save job posting
     const savedJobPosting = await new JobPost({ description }).save();
 
-    res.status(201).json({ savedJobPosting });
+    res.status(201).json({ jobposting: savedJobPosting });
   } catch (err) {
     console.log(err);
     res.status(500).json({ err: err.message });
@@ -96,7 +96,7 @@ export async function updateJobPost(req, res) {
     if (!updatedJobPost) {
       return res.status(404).json({ message: `Job Post not found` });
     }
-    res.status(200).json(updatedJobPost);
+    res.status(200).json({ jobposting: updatedJobPost });
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });

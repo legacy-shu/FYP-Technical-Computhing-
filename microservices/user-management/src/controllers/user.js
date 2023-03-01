@@ -13,7 +13,7 @@ export async function getUser(req, res) {
       "user",
       "email role"
     );
-    res.status(200).json({ message: result });
+    res.status(200).json({ profile: result });
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });
@@ -22,8 +22,7 @@ export async function getUser(req, res) {
 
 export async function registerUser(req, res) {
   try {
-    const { user } = req.body;
-    const { profile } = req.body;
+    const { user, profile } = req.body;
 
     //check existing user email
     const found = await User.findOne({ email: user.email });
@@ -47,9 +46,7 @@ export async function registerUser(req, res) {
       id: savedUser.id,
     });
 
-    res
-      .status(201)
-      .send({ user: savedUser, profile: savedProfile, token: token });
+    res.status(201).send({ token, userId: savedUser.id, role: savedUser.role });
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });

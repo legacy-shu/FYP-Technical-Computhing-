@@ -3,7 +3,6 @@ import { config } from "./config.js";
 export const ROUTES = [
   {
     url: "/jobs/all",
-    auth: true,
     proxy: {
       target: `http://localhost:${config.job_service.port}`,
       changeOrigin: true,
@@ -14,6 +13,7 @@ export const ROUTES = [
   },
   {
     url: "/jobs",
+    auth: true,
     proxy: {
       target: `http://localhost:${config.job_service.port}`,
       changeOrigin: true,
@@ -21,6 +21,7 @@ export const ROUTES = [
   },
   {
     url: "/jobs/search",
+    auth: true,
     proxy: {
       target: `http://localhost:${config.job_service.port}`,
       changeOrigin: true,
@@ -28,6 +29,7 @@ export const ROUTES = [
   },
   {
     url: "/jobs/:userId/posted",
+    auth: true,
     proxy: {
       target: `http://localhost:${config.job_service.port}`,
       changeOrigin: true,
@@ -35,7 +37,6 @@ export const ROUTES = [
   },
   {
     url: "/users/signup",
-    auth: true,
     proxy: {
       target: `http://localhost:${config.user_service.port}`,
       changeOrigin: true,
@@ -46,6 +47,7 @@ export const ROUTES = [
   },
   {
     url: "/users",
+    auth: true,
     proxy: {
       target: `http://localhost:${config.user_service.port}`,
       changeOrigin: true,
@@ -53,6 +55,7 @@ export const ROUTES = [
   },
   {
     url: "/auth/check",
+    auth: true,
     proxy: {
       target: `http://localhost:${config.user_service.port}`,
       changeOrigin: true,
@@ -60,7 +63,6 @@ export const ROUTES = [
   },
   {
     url: "/auth/login",
-    auth: true,
     proxy: {
       target: `http://localhost:${config.user_service.port}`,
       changeOrigin: true,

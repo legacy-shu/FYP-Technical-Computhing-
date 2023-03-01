@@ -1,28 +1,37 @@
-import axios from "axios";
-
 export default class UserAuthService {
-  constructor(tokenStorage) {
+  constructor(httpClient, tokenStorage) {
+    this.httpClient = httpClient;
     this.tokenStorage = tokenStorage;
   }
-  async login() {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_BASE}${process.env.REACT_APP_API_PATH_AUTH_LOGIN}`,
-        {
-          user: {
-            email: "test2@gmail.com",
-            password: "abcd1234",
-          },
-        }
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+  async login(email, password) {
+    email = "test@gmail.com";
+    password = "abcd1234";
+    const resp = await this.httpClient.requestAPI(
+      process.env.REACT_APP_API_PATH_AUTH_LOGIN,
+      {
+        method: "POST",
+        data: { user: { email, password } },
+      }
+    );
+    if (resp.status == 200) {
+      this.tokenStorage.saveToken(resp.data.token);
+    }
+    return resp;
   }
-  async check() {}
+
+  async check() {
+    const token = this.tokenStorage.getToken();
+    const resp = await this.httpClient.requestAPI(
+      process.env.REACT_APP_API_PATH_AUTH_CHECK,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    return resp;
+  }
+
   async logout() {
     this.tokenStorage.clearToken();
   }
