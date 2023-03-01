@@ -9,7 +9,7 @@ router.post("/:jobId", jobPostController.applyJob);
 router.get("/", jobPostController.getAllJobs);
 router.get("/search", jobPostController.searchJobPosts);
 
-router.get("/:jobId", jobPostController.getAjobById);
+router.get("/:jobId", jobPostController.getjobById);
 router.get("/:userId/posted", jobPostController.getJobsByUserId);
 
 router.put("/:jobId", jobPostController.updateJobPost);

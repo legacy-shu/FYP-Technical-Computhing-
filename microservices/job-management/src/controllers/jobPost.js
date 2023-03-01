@@ -68,7 +68,7 @@ export async function getJobsByUserId(req, res) {
     res.status(500).send({ err: err.message });
   }
 }
-export async function getAjobById(req, res) {
+export async function getjobById(req, res) {
   try {
     const id = req.params.jobId;
     const jobPost = await JobPost.findById({ _id: id });
