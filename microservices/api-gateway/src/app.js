@@ -1,15 +1,16 @@
 import express from "express";
-import { setupLogging } from "./logging.js";
+import cors from "cors";
+import morgan from "morgan";
 import { setupProxies } from "./proxy.js";
 import { ROUTES } from "./routes.js";
 import { config } from "./config.js";
 import { verifyToekn } from "./auth.js";
-import cors from "cors";
 
 const app = express();
 const port = config.host.port;
 
 app.use(cors());
+app.use(morgan("dev"));
 
 setupLogging(app);
 setupProxies(app, verifyToekn, ROUTES);
