@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import TokenStorage from "./utils/tokenStorage.js";
 import UserAuthService from "./services/userAuthService.js";
-import UserProfileService from "./services/userUserService.js";
+import UserProfileService from "./services/userProfileService.js";
 import JobPostService from "./services/jobPostService";
 import HttpClient from "./utils/httpClient";
 
@@ -13,6 +13,6 @@ const tokenStorage = new TokenStorage();
 const userAuthService = new UserAuthService(httpClient, tokenStorage);
 const userProfileService = new UserProfileService(httpClient, tokenStorage);
 //userAuthService.login();
-//userAuthService.check();
-userProfileService.getUser("");
+userAuthService.check();
+//userProfileService.getUser("");
 root.render(<App />);

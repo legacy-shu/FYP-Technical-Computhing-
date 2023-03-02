@@ -2,7 +2,8 @@ import { User } from "../models/index.js";
 import { compare } from "bcrypt";
 import { createJwtToken } from "../utils/jwtCreator.js";
 export async function check(req, res) {
-  console.log(res);
+  console.log(req.body);
+  console.log(res.body);
   //console.log(res);
   // const user = await User.findById(id);
   // if (!user) {

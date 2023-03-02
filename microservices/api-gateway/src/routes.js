@@ -1,5 +1,4 @@
 import { config } from "./config.js";
-
 export const ROUTES = [
   {
     url: "/jobs/all",

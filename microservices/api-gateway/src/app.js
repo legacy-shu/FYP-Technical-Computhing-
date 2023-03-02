@@ -11,6 +11,7 @@ const port = config.host.port;
 
 app.use(cors());
 app.use(morgan("dev"));
+app.use(express.json());
 
 setupProxies(app, verifyToekn, ROUTES);
 

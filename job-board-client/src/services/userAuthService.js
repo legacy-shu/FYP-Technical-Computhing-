@@ -25,9 +25,8 @@ export default class UserAuthService {
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_AUTH_CHECK,
       {
-        method: "GET",
+        method: "POST",
         headers: { Authorization: `Bearer ${token}` },
-        data: { test: "test" },
       }
     );
     return resp;
