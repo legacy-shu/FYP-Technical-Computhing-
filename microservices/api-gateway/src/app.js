@@ -12,7 +12,6 @@ const port = config.host.port;
 app.use(cors());
 app.use(morgan("dev"));
 
-setupLogging(app);
 setupProxies(app, verifyToekn, ROUTES);
 
 app.listen(port, () => {

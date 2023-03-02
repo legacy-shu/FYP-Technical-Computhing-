@@ -14,7 +14,7 @@ export default class UserAuthService {
         data: { user: { email, password } },
       }
     );
-    if (resp.status == 200) {
+    if (resp.status === 200) {
       this.tokenStorage.saveToken(resp.data.token);
     }
     return resp;
@@ -27,6 +27,7 @@ export default class UserAuthService {
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
+        data: { test: "test" },
       }
     );
     return resp;

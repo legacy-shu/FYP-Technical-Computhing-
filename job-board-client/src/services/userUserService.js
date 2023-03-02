@@ -33,7 +33,7 @@ export default class UserProfileService {
         data: { user: profile.user, profile: profile.profile },
       }
     );
-    if (resp.status == 201) {
+    if (resp.status === 201) {
       this.tokenStorage.saveToken(resp.data.token);
     }
     return resp;

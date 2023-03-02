@@ -8,7 +8,7 @@ export const verifyToekn = async (req, res, next) => {
   }
   const token = authHeader.split(" ")[1];
   try {
-    req.decoded = jwt.verify(token, config.jwt.secretKey);
+    jwt.verify(token, config.jwt.secretKey);
     return next();
   } catch (error) {
     if (error.message === "jwt expired") {
