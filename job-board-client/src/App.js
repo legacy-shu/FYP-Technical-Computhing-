@@ -1,5 +1,6 @@
+import SignInSide from "../src/components/LoginForm";
 function App() {
-  return <h1>Hello</h1>;
+  return <SignInSide></SignInSide>;
 }
 
 export default App;

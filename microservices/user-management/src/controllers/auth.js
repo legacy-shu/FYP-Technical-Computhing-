@@ -2,6 +2,7 @@ import { User } from "../models/index.js";
 import { compare } from "bcrypt";
 import { createJwtToken } from "../utils/jwtCreator.js";
 export async function check(req, res) {
+  //TODO: implement later
   console.log(req.body);
   console.log(res.body);
   //console.log(res);

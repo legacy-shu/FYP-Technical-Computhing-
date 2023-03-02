@@ -9,8 +9,9 @@ export const verifyToekn = async (req, res, next) => {
   const token = authHeader.split(" ")[1];
   try {
     const decoded = await jwt.verify(token, config.jwt.secretKey);
+    //TODO: change this later
     req.body.id = decoded.user.id;
-    console.log(req.body.id);
+    console.log(req.body);
     return next();
   } catch (error) {
     if (error.message === "jwt expired") {

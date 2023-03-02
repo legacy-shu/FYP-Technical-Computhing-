@@ -12,7 +12,6 @@ const httpClient = new HttpClient(process.env.REACT_APP_API_BASE);
 const tokenStorage = new TokenStorage();
 const userAuthService = new UserAuthService(httpClient, tokenStorage);
 const userProfileService = new UserProfileService(httpClient, tokenStorage);
-//userAuthService.login();
-userAuthService.check();
-//userProfileService.getUser("");
+const jobPostService = new JobPostService(httpClient, tokenStorage);
+
 root.render(<App />);
