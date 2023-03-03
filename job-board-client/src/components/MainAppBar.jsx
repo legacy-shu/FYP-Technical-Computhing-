@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   AppBar,
   Toolbar,
@@ -8,17 +7,16 @@ import {
   CssBaseline,
   Stack,
   Box,
+  Fab,
+  ThemeProvider,
 } from "@mui/material";
+import { styled, alpha, createTheme } from "@mui/material/styles";
+import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
-import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Fab from "@mui/material/Fab";
-import { blueGrey } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material";
 
-export default function NavigationBar() {
+export default function MainAppBar() {
   const theme = createTheme({
     palette: {
       primary: {
@@ -43,7 +41,6 @@ export default function NavigationBar() {
       width: "auto",
     },
   }));
-
   const SearchIconWrapper = styled("div")(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: "100%",
@@ -53,7 +50,6 @@ export default function NavigationBar() {
     alignItems: "center",
     justifyContent: "center",
   }));
-
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
     "& .MuiInputBase-input": {
@@ -89,6 +85,7 @@ export default function NavigationBar() {
               JOB FINDER
             </Typography>
           </Stack>
+
           <Box m="auto" sx={{ width: "75%" }}>
             <Search>
               <SearchIconWrapper>
@@ -100,6 +97,7 @@ export default function NavigationBar() {
               />
             </Search>
           </Box>
+
           <Box sx={{ m: 2 }}>
             <Fab color="secondary" variant="extended">
               <AccountCircleIcon sx={{ mr: 1 }} />

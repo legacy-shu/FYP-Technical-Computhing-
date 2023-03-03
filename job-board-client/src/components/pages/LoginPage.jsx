@@ -1,20 +1,30 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Grid";
+import {
+  TextField,
+  Avatar,
+  Button,
+  Link,
+  CssBaseline,
+  Paper,
+  Box,
+  Stack,
+  Grid,
+  Typography,
+} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { blueGrey } from "@mui/material/colors";
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: blueGrey[500],
+    },
+    secondary: {
+      main: blueGrey[800],
+    },
+  },
+});
 
-const theme = createTheme();
-
-export function LoginView() {
+export default function LoginPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,10 +46,6 @@ export function LoginView() {
           sx={{
             backgroundImage: "url(https://source.unsplash.com/random)",
             backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
