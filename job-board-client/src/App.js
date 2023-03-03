@@ -1,17 +1,18 @@
 import React from "react";
-import MainAppBar from "./components/MainAppBar.jsx";
 import MainPage from "./components/pages/MainPage.jsx";
-import LoginPage from "./components/pages/LoginPage.jsx";
-import SignUpPage from "./components/pages/SignUpPage.jsx";
-import Footer from "./components/Footer.jsx";
+import LoginPage from "./components/pages/forms/LoginPage.jsx";
+import SignUpPage from "./components/pages/forms/SignUpPage.jsx";
+import RegisterJobPost from "./components/pages/forms/RegisterJobPost.jsx";
+import Footer from "./components/Footer";
+
 function App({ userAuthService, userProfileService, jobPostService }) {
   return (
     <React.Fragment>
       {/* <LoginPage></LoginPage> */}
-      <SignUpPage></SignUpPage>
-      {/* <MainAppBar></MainAppBar>
-      <MainPage></MainPage>
-      <Footer></Footer> */}
+      {/* <SignUpPage></SignUpPage> */}
+      {/* <MainPage></MainPage> */}
+      <RegisterJobPost></RegisterJobPost>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

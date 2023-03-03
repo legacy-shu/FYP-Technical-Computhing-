@@ -1,9 +1,9 @@
+import React from "react";
 import { Typography, Box, Paper, CardContent } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
 export default function JobDescription() {
   return (
-    <ThemeProvider>
-      <Box sx={{ pb: 5}}>
+    <React.Fragment>
+      <Box sx={{ pb: 5 }}>
         <Paper sx={{ padding: "12px" }} square>
           <CardContent>
             <Typography sx={{ mb: 3 }} variant="h4" component="div">
@@ -84,6 +84,6 @@ export default function JobDescription() {
           </CardContent>
         </Paper>
       </Box>
-    </ThemeProvider>
+    </React.Fragment>
   );
 }

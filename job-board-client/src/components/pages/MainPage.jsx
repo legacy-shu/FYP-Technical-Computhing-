@@ -5,6 +5,8 @@ import JobDescription from "../JobDescription";
 import JobCard from "../JobCard";
 import CompanyHeader from "../CompanyHeader";
 import CompanyInfoList from "../CompanyInfo";
+import MainAppBar from "../MainAppBar";
+
 export default function MainPage() {
   const theme = createTheme({
     palette: {
@@ -15,6 +17,7 @@ export default function MainPage() {
   });
   return (
     <ThemeProvider theme={theme}>
+      <MainAppBar></MainAppBar>
       <Grid
         bgcolor="primary.dark"
         container
