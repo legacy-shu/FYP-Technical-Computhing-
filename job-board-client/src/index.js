@@ -14,4 +14,10 @@ const userAuthService = new UserAuthService(httpClient, tokenStorage);
 const userProfileService = new UserProfileService(httpClient, tokenStorage);
 const jobPostService = new JobPostService(httpClient, tokenStorage);
 
-root.render(<App />);
+root.render(
+  <App
+    userAuthService={userAuthService}
+    userProfileService={userProfileService}
+    jobPostService={jobPostService}
+  />
+);

@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -13,7 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export function LoginView() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -57,7 +58,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Login
             </Typography>
             <Box
               component="form"
@@ -85,14 +86,15 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
-              <Box>
+              <Stack spacing={2}>
                 <Button
+                  color="secondary"
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign In
+                  Login
                 </Button>
                 <Grid container>
                   <Grid item>
@@ -101,7 +103,7 @@ export default function SignInSide() {
                     </Link>
                   </Grid>
                 </Grid>
-              </Box>
+              </Stack>
             </Box>
           </Box>
         </Grid>
