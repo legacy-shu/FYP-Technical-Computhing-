@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Avatar,
   Button,
@@ -11,9 +10,10 @@ import {
   Container,
   Paper,
 } from "@mui/material";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+
 const theme = createTheme({
   palette: {
     primary: {

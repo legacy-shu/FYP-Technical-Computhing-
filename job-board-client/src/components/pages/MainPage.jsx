@@ -1,12 +1,12 @@
+import { useState, useEffect } from "react";
 import { CssBaseline, Box, Grid, ThemeProvider, Paper } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
-import JobDescription from "../JobDescription";
+import DetailMain from "../DetailMain";
 import JobCard from "../JobCard";
-import CompanyHeader from "../CompanyHeader";
-import CompanyInfoList from "../CompanyInfo";
-import MainAppBar from "../MainAppBar";
-import { useState, useEffect } from "react";
+import DetailHeader from "../DetailHeader";
+import DetailList from "../DetailList";
+import MainAppBar from "../NavBar";
 import EmptyPage from "./EmptyPage";
 import Footer from "../Footer";
 
@@ -63,15 +63,10 @@ export default function MainPage({
   return (
     <ThemeProvider theme={theme}>
       <MainAppBar setKeyword={onSearchBarEnter}></MainAppBar>
-      <Grid
-        bgcolor="primary.dark"
-        container
-        component="main"
-        sx={{ height: "100%" }}
-      >
+      <Grid bgcolor="primary.dark" container component="main">
         <CssBaseline />
-        <Grid item xs={4}>
-          <Box style={{ maxHeight: "100vh", overflow: "auto", minWidth: 250 }}>
+        <Grid item xs={12} sm={4}>
+          <Box style={{ maxHeight: "100vh", overflow: "auto" }}>
             {jobs.map((job) => (
               <JobCard
                 job={job}
@@ -82,19 +77,17 @@ export default function MainPage({
             ))}
           </Box>
         </Grid>
-        <Grid item xs={8} paddingX={8}>
+        <Grid item xs={12} sm={8}>
           {detail ? (
-            <Box sx={{ border: 1, mt: 4, mb: 4 }}>
-              <CompanyHeader detail={detail.description}></CompanyHeader>
-              <Box
-                style={{ maxHeight: "72vh", overflow: "auto", minWidth: 400 }}
-              >
-                <CompanyInfoList detail={detail.description}></CompanyInfoList>
-                <JobDescription detail={detail.description}></JobDescription>
+            <Box sx={{ border: 1, m: 4 }}>
+              <DetailHeader detail={detail.description}></DetailHeader>
+              <Box style={{ maxHeight: "70vh", overflow: "auto" }}>
+                <DetailList detail={detail.description}></DetailList>
+                <DetailMain detail={detail.description}></DetailMain>
               </Box>
             </Box>
           ) : (
-            <Box sx={{ border: 1, mt: 4, mb: 4 }}>
+            <Box sx={{ border: 1, m: 4 }}>
               <EmptyPage></EmptyPage>
             </Box>
           )}

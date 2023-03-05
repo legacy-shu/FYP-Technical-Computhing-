@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box, Paper, CardContent } from "@mui/material";
-export default function JobDescription({ detail }) {
+export default function DetailMain({ detail }) {
   return (
     <React.Fragment>
       <Box>

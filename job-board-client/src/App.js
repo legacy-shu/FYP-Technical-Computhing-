@@ -1,14 +1,8 @@
-import { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/pages/MainPage.jsx";
-import LoginPage from "./components/pages/forms/LoginPage.jsx";
-import SignUpPage from "./components/pages/forms/SignUpPage.jsx";
-import RegisterJobPost from "./components/pages/forms/RegisterJobPost.jsx";
+import Login from "./components/forms/Login.jsx";
+import RegisterProfile from "./components/forms/RegisterProfile.jsx";
+import RegisterJobPost from "./components/forms/RegisterJobPost.jsx";
 
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
@@ -22,11 +16,13 @@ function App({ userAuthService, userProfileService, jobPostService }) {
         <Route path="/" element={<MainPage {...services}></MainPage>}></Route>
         <Route
           path="/login"
-          element={<LoginPage service={userAuthService}></LoginPage>}
+          element={<Login service={userAuthService}></Login>}
         ></Route>
         <Route
           path="/register/user"
-          element={<SignUpPage service={userProfileService}></SignUpPage>}
+          element={
+            <RegisterProfile service={userProfileService}></RegisterProfile>
+          }
         ></Route>
         <Route
           path="/register/job"

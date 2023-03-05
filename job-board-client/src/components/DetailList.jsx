@@ -10,9 +10,9 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PlaceIcon from "@mui/icons-material/Place";
 import WorkIcon from "@mui/icons-material/Work";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
-export default function CompanyInfoList({ detail }) {
+export default function DetailList({ detail }) {
   return (
-    <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+    <List sx={{ bgcolor: "background.paper" }}>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -20,10 +20,7 @@ export default function CompanyInfoList({ detail }) {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="SALARY" />
-        <ListItemText
-          style={{ textAlign: "right" }}
-          primary={detail?.salary}
-        />
+        <ListItemText style={{ textAlign: "right" }} primary={detail?.salary} />
       </ListItem>
       <Divider />
 

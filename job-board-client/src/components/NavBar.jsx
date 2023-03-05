@@ -36,7 +36,7 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: "100%",
+  width: "100vw",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
@@ -56,9 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    width: "70vw",
   },
 }));
-export default function MainAppBar({ setKeyword }) {
+export default function NavBar({ setKeyword }) {
   const [value, setValue] = useState("");
   const handleChage = (event) => {
     setValue(event.target.value);
@@ -92,7 +93,7 @@ export default function MainAppBar({ setKeyword }) {
             </Typography>
           </Stack>
 
-          <Box m="auto" sx={{ width: "75%" }}>
+          <Box m="auto" sx={{ width: "75vw" }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />

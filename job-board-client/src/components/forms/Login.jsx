@@ -24,7 +24,7 @@ const theme = createTheme({
   },
 });
 
-export default function LoginPage({ service }) {
+export default function Login({ service }) {
   const requestLogin = async (email, password) => {
     const resp = await service.login(email, password);
     if (resp.status === 200) {

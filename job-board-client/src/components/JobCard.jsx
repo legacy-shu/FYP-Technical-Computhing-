@@ -27,12 +27,9 @@ export default function JobCard({ job, onClick, id }) {
   };
   return (
     <ThemeProvider theme={theme}>
-      <CardActionArea
-        sx={{ mt: 4, ml: 3, mr: 3, minWidth: 320 }}
-        onClick={clickedCard}
-      >
+      <CardActionArea onClick={clickedCard}>
         <Box>
-          <Paper sx={{ padding: "12px", border: 1 }} variant="outlined">
+          <Paper sx={{ border: 1, mt: 4, ml: 4, mr: 4 }} variant="outlined">
             <CardContent>
               <Typography
                 sx={{ fontSize: 30, fontWeight: "bold" }}

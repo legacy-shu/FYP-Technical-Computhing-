@@ -1,14 +1,12 @@
-import * as React from "react";
 import { Box, TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function CountrySelect(props) {
-  const [value, setValue] = React.useState();
+export default function CountrySelect({setCountry}) {
   return (
     <Autocomplete
       id="country-select"
       onChange={(event, newValue) => {
-        props.setCountry(newValue);
+        setCountry(newValue);
       }}
       options={countries}
       autoHighlight

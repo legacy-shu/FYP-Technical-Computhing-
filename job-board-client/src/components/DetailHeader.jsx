@@ -19,11 +19,11 @@ const theme = createTheme({
     },
   },
 });
-export default function CompanyHeader({ detail }) {
+export default function DetailHeader({ detail }) {
   return (
     <ThemeProvider theme={theme}>
-      <Box minWidth={400}>
-        <Paper sx={{ padding: "12px" }} square>
+      <Box>
+        <Paper sx={{ p:1 }} square>
           <CardContent>
             <Typography
               sx={{ fontSize: 35, fontWeight: "bold" }}

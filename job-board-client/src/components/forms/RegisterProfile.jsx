@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import {
   Avatar,
   Button,
@@ -15,10 +15,11 @@ import {
   FormLabel,
   Paper,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CountrySelect from "./CountrySelect";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -30,9 +31,9 @@ const theme = createTheme({
   },
 });
 
-export default function SignUpPage({ service }) {
-  const [userRole, setUserRole] = React.useState(false);
-  const [country, setCountry] = React.useState();
+export default function RegisterProfile({ service }) {
+  const [userRole, setUserRole] = useState(false);
+  const [country, setCountry] = useState();
 
   const requestSignUp = async (profile) => {
     const resp = await service.registerProfile(profile);
@@ -81,7 +82,7 @@ export default function SignUpPage({ service }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="sm" sx={{mb:20}}>
+      <Container component="main" maxWidth="sm" sx={{ mb: 20 }}>
         <CssBaseline />
         <Box
           sx={{
@@ -244,7 +245,7 @@ export default function SignUpPage({ service }) {
               color="secondary"
               sx={{ mt: 0, mb: 2 }}
             >
-              Sign Up
+              Register Profile
             </Button>
           </Box>
         </Box>
