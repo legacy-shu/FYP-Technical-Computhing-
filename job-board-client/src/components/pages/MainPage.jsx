@@ -67,7 +67,7 @@ export default function MainPage({
         bgcolor="primary.dark"
         container
         component="main"
-        sx={{ height: "100vh" }}
+        sx={{ height: "100%" }}
       >
         <CssBaseline />
         <Grid item xs={4}>
@@ -84,7 +84,7 @@ export default function MainPage({
         </Grid>
         <Grid item xs={8} paddingX={8}>
           {detail ? (
-            <Box sx={{ border: 1 }} marginTop={4}>
+            <Box sx={{ border: 1, mt: 4, mb: 4 }}>
               <CompanyHeader detail={detail.description}></CompanyHeader>
               <Box
                 style={{ maxHeight: "72vh", overflow: "auto", minWidth: 400 }}
@@ -94,7 +94,7 @@ export default function MainPage({
               </Box>
             </Box>
           ) : (
-            <Box sx={{ border: 1, mt: 4 }}>
+            <Box sx={{ border: 1, mt: 4, mb: 4 }}>
               <EmptyPage></EmptyPage>
             </Box>
           )}
