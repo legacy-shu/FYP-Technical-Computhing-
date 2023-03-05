@@ -15,48 +15,54 @@ import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function MainAppBar() {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: blueGrey[900],
-      },
-      secondary: {
-        main: blueGrey[800],
-      },
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: blueGrey[900],
     },
-  });
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    secondary: {
+      main: blueGrey[800],
     },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  }));
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    },
-  }));
+  },
+});
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+  },
+}));
+export default function MainAppBar({ setKeyword }) {
+  const [value, setValue] = useState("");
+  const handleChage = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -94,15 +100,24 @@ export default function MainAppBar() {
               <StyledInputBase
                 placeholder="Job Title"
                 inputProps={{ "aria-label": "search" }}
+                onChange={handleChage}
+                onKeyDown={(e) => {
+                  if (e.key == "Enter") {
+                    setKeyword(value);
+                  }
+                }}
+                value={value}
               />
             </Search>
           </Box>
 
           <Box sx={{ m: 2 }}>
-            <Fab color="secondary" variant="extended">
-              <AccountCircleIcon sx={{ mr: 1 }} />
-              Login
-            </Fab>
+            <Link to={"/login"}>
+              <Fab color="secondary" variant="extended">
+                <AccountCircleIcon sx={{ mr: 1 }} />
+                Login
+              </Fab>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>

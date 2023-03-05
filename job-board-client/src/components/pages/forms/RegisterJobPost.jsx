@@ -3,6 +3,7 @@ import {
   Avatar,
   Button,
   CssBaseline,
+  Autocomplete,
   TextField,
   Grid,
   Box,
@@ -23,6 +24,18 @@ const theme = createTheme({
     },
   },
 });
+const jobTypes = [
+  "Full-time(permanent,office)",
+  "Full-time(permanent,remote)",
+  "Full-time(permanent,hybrid)",
+  "Full-time(contract,office)",
+  "Full-time(contract,remote)",
+  "Full-time(contract,hybrid)",
+  "Part-time(office)",
+  "Part-time(remote)",
+  "Part-time(hybrid)",
+  "Intern",
+];
 
 export default function RegisterJobPost() {
   const handleSubmit = (event) => {
@@ -35,7 +48,7 @@ export default function RegisterJobPost() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="lg">
+      <Container component="main" maxWidth="lg" sx={{ mb: 20 }}>
         <CssBaseline />
         <Box
           sx={{
@@ -118,13 +131,19 @@ export default function RegisterJobPost() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="location"
-                    id="location"
-                    label="Job Type"
-                  />
+                  <Autocomplete
+                    options={jobTypes}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        required
+                        fullWidth
+                        name="location"
+                        id="location"
+                        label="Job Type"
+                      />
+                    )}
+                  ></Autocomplete>
                 </Grid>
                 <Grid item xs={12}>
                   <TextField

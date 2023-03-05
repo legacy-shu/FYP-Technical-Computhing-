@@ -10,7 +10,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PlaceIcon from "@mui/icons-material/Place";
 import WorkIcon from "@mui/icons-material/Work";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
-export default function CompanyInfoList() {
+export default function CompanyInfoList({ detail }) {
   return (
     <List sx={{ width: "100%", bgcolor: "background.paper" }}>
       <ListItem>
@@ -22,7 +22,7 @@ export default function CompanyInfoList() {
         <ListItemText primary="SALARY" />
         <ListItemText
           style={{ textAlign: "right" }}
-          primary="£25000 - £35000 / Per Year"
+          primary={detail?.salary}
         />
       </ListItem>
       <Divider />
@@ -36,7 +36,7 @@ export default function CompanyInfoList() {
         <ListItemText primary="LOCATION" />
         <ListItemText
           style={{ textAlign: "right" }}
-          primary="Chorley, NW PR7"
+          primary={`${detail?.address?.city},${detail?.address?.country}`}
         />
       </ListItem>
       <Divider />
@@ -50,7 +50,7 @@ export default function CompanyInfoList() {
         <ListItemText primary="JOB TYPE" />
         <ListItemText
           style={{ textAlign: "right" }}
-          primary="Full-Time, Permanent"
+          primary={detail?.jobType}
         />
       </ListItem>
       <Divider />
@@ -62,7 +62,7 @@ export default function CompanyInfoList() {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="POSTED" />
-        <ListItemText style={{ textAlign: "right" }} primary="2 days ago" />
+        <ListItemText style={{ textAlign: "right" }} primary={detail?.posted} />
       </ListItem>
       <Divider />
     </List>

@@ -24,14 +24,23 @@ const theme = createTheme({
   },
 });
 
-export default function LoginPage() {
+export default function LoginPage({ service }) {
+  const requestLogin = async (email, password) => {
+    const resp = await service.login(email, password);
+    if (resp.status === 200) {
+      console.log(resp.data);
+    } else {
+      //TODO: error handle
+      console.log(resp);
+    }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    //TODO: check validation
+    const email = data.get("email");
+    const password = data.get("password");
+    requestLogin(email, password);
   };
 
   return (
@@ -104,7 +113,7 @@ export default function LoginPage() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="#" variant="body">
+                    <Link href="/register/user" variant="body">
                       {"Don't have an account? Sign Up"}
                     </Link>
                   </Grid>

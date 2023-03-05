@@ -3,20 +3,8 @@ import JobPost from "../models/jobPost.js";
 export async function registerJobPost(req, res) {
   try {
     const { description } = req.body;
-
-    //check existing job posting
-    const found = await JobPost.findOne({
-      "description.title": description.title,
-    });
-    if (found) {
-      return res
-        .status(409)
-        .json({ message: `${description.title} already exists` });
-    }
-
     //save job posting
     const savedJobPosting = await new JobPost({ description }).save();
-
     res.status(201).json({ jobposting: savedJobPosting });
   } catch (err) {
     console.log(err);
@@ -30,7 +18,7 @@ export async function applyJob(req, res) {
 
 export async function getAllJobs(req, res) {
   try {
-    const result = await JobPost.find();
+    const result = await JobPost.find().sort({ _id: "desc" });
     if (!result) {
       return res.status(404).json({ message: `Job Post not found` });
     }

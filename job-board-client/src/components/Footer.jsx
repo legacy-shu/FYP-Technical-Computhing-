@@ -46,11 +46,23 @@ export default function Footer() {
         }}
       >
         <CssBaseline />
-        <Container component="main" sx={{ mt: 18, mb: 2 }} maxWidth="sm">
-          <Typography variant="h2" color="secondary" component="h1" gutterBottom>
+        <Container component="main" sx={{ mt: 10, mb: 2 }} maxWidth="sm">
+          <Typography
+            sx={{ fontSize: 70, fontWeight: "bold" }}
+            variant="h2"
+            color="secondary"
+            component="h1"
+            gutterBottom
+          >
             Job-Board Web Application
           </Typography>
-          <Typography variant="h6" color="white" component="h2" gutterBottom>
+          <Typography
+            sx={{ fontWeight: "bold" }}
+            variant="h6"
+            color="white"
+            component="h2"
+            gutterBottom
+          >
             {"Job Seekers can find a job and apply for it. "}
             {"Job Providers can create job postings. "}
             {"The system will send notification by email"}
@@ -62,8 +74,8 @@ export default function Footer() {
         <Box
           component="footer"
           sx={{
-            py: 3,
-            px: 2,
+            py: 6,
+            px: 4,
             mt: "auto",
             backgroundColor: "primary.light",
           }}

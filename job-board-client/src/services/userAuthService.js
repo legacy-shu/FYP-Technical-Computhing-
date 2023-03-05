@@ -5,8 +5,6 @@ export default class UserAuthService {
   }
 
   async login(email, password) {
-    email = "test@gmail.com";
-    password = "abcd1234";
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_AUTH_LOGIN,
       {

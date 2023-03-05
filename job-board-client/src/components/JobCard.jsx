@@ -1,38 +1,64 @@
 import {
-  Button,
   Typography,
   Box,
   Paper,
-  CardActions,
   CardContent,
+  ThemeProvider,
+  CardActionArea,
 } from "@mui/material";
-
-export default function JobCard() {
+import { createTheme } from "@mui/material/styles";
+import { blueGrey } from "@mui/material/colors";
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: blueGrey[500],
+    },
+    secondary: {
+      main: blueGrey[800],
+    },
+  },
+});
+export default function JobCard({ job, onClick, id }) {
+  const description = job?.description || {};
+  const { company, title, address, salary } = description;
+  const location = `${address?.city},${address?.country}`;
+  const clickedCard = () => {
+    onClick(id);
+  };
   return (
-    <Box sx={{ m: 4, minWidth: 320 }}>
-      <Paper sx={{ padding: "12px" }} variant="outlined">
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Word of the Day
-          </Typography>
-          <Typography variant="h5" component="div">
-            ABCDEFGGGGGGG
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
-          </Typography>
-          <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button color="secondary" size="small">
-            Learn More
-          </Button>
-        </CardActions>
-      </Paper>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <CardActionArea onClick={clickedCard}>
+        <Box sx={{ mt: 4,ml:3, mr:3, minWidth: 320 }}>
+          <Paper sx={{ padding: "12px", border: 1 }} variant="outlined">
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 30, fontWeight: "bold" }}
+                component="div"
+              >
+                {title}
+              </Typography>
+              <Typography
+                mt={1}
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                color="secondary"
+                gutterBottom
+              >
+                {company}
+              </Typography>
+              <Typography
+                sx={{ fontSize: 15, fontWeight: "bold" }}
+                color="secondary.light"
+              >
+                {location}
+              </Typography>
+              <Typography mt={1} sx={{ fontSize: 15, fontWeight: "bold" }}>
+                {salary}
+                <br />
+              </Typography>
+            </CardContent>
+          </Paper>
+        </Box>
+      </CardActionArea>
+    </ThemeProvider>
   );
 }

@@ -86,7 +86,6 @@ export default class JobPostService {
     return resp;
   }
   async getjobById(jobId) {
-    jobId = "63fd24ada6ddb6225340bd09";
     const token = this.tokenStorage.getToken();
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_JOB + `/${jobId}`,

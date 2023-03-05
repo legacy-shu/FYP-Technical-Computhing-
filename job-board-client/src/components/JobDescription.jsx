@@ -1,86 +1,47 @@
 import React from "react";
 import { Typography, Box, Paper, CardContent } from "@mui/material";
-export default function JobDescription() {
+export default function JobDescription({ detail }) {
   return (
     <React.Fragment>
-      <Box sx={{ pb: 5 }}>
-        <Paper sx={{ padding: "12px" }} square>
+      <Box>
+        <Paper sx={{ padding: "16px" }}>
           <CardContent>
-            <Typography sx={{ mb: 3 }} variant="h4" component="div">
+            <Typography
+              sx={{ mb: 3, fontSize: 40, fontWeight: "bold" }}
+              variant="h4"
+              component="div"
+            >
               Description
             </Typography>
+            <Typography
+              sx={{ mt: 5, fontSize: 30, fontWeight: "bold" }}
+              variant="subtitle1"
+              component="div"
+            >
+              About:
+            </Typography>
             <Typography sx={{ mb: 3, p: 1 }} variant="body1">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-              currently looking for an IT Support Analyst. You will be working
-              for a growing company that will offer excellent career
-              development.
-              <br />
-              {'"a benevolent smile"'}
+              {detail?.about}
             </Typography>
 
-            <Typography sx={{ mt: 5 }} variant="subtitle1" component="div">
+            <Typography
+              sx={{ mt: 5, fontSize: 30, fontWeight: "bold" }}
+              variant="subtitle1"
+              component="div"
+            >
               Responsibilities:
             </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ mt: 5 }} variant="subtitle1" component="div">
+
+            <Typography sx={{ p: 1 }}>{detail?.responsibilities}</Typography>
+
+            <Typography
+              sx={{ mt: 5, fontSize: 30, fontWeight: "bold" }}
+              variant="subtitle1"
+              component="div"
+            >
               Skills:
             </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
-            <Typography sx={{ pl: 1 }} variant="body2">
-              IT Support Analyst Chorley. Our client based in Lancashire is
-            </Typography>
+            <Typography sx={{ p: 1 }}>{detail?.responsibilities}</Typography>
           </CardContent>
         </Paper>
       </Box>

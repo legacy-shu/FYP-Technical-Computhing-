@@ -30,25 +30,58 @@ const theme = createTheme({
   },
 });
 
-export default function SignUpPage() {
-  const [value, setValue] = React.useState("job seeker");
+export default function SignUpPage({ service }) {
+  const [userRole, setUserRole] = React.useState(false);
+  const [country, setCountry] = React.useState();
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const requestSignUp = async (profile) => {
+    const resp = await service.registerProfile(profile);
+    if (resp.status === 201) {
+      console.log(resp.data);
+    } else {
+      //TODO: error handle
+      console.log(resp.message);
+    }
+  };
+  const handleChangeUserRole = (event) => {
+    setUserRole(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const profile = {
+      user: {
+        email: data.get("email"),
+        password: data.get("password"),
+        role: {
+          provider: userRole,
+        },
+      },
+      profile: {
+        name: {
+          first: data.get("first-name"),
+          last: data.get("last-name"),
+        },
+        contact: {
+          countryCode: country?.phone,
+          phoneNumber: data.get("phone-number"),
+        },
+        address: {
+          country: country?.label,
+          zipCode: data.get("zip-code"),
+          state: data.get("state"),
+          city: data.get("city"),
+        },
+      },
+    };
+
+    requestSignUp(profile);
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="sm">
+      <Container component="main" maxWidth="sm" sx={{mb:20}}>
         <CssBaseline />
         <Box
           sx={{
@@ -137,7 +170,7 @@ export default function SignUpPage() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <CountrySelect></CountrySelect>
+                  <CountrySelect setCountry={setCountry}></CountrySelect>
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -154,7 +187,6 @@ export default function SignUpPage() {
                     required
                     fullWidth
                     name="state"
-                    type="state"
                     id="state"
                     label="State"
                   />
@@ -163,9 +195,8 @@ export default function SignUpPage() {
                   <TextField
                     required
                     fullWidth
-                    name="zipcode"
-                    type="zipcode"
-                    id="zipcode"
+                    name="zip-code"
+                    id="zip-code"
                     label="Zip Code"
                   />
                 </Grid>
@@ -174,7 +205,6 @@ export default function SignUpPage() {
                     required
                     fullWidth
                     name="city"
-                    type="city"
                     id="city"
                     label="City"
                   />
@@ -183,21 +213,23 @@ export default function SignUpPage() {
             </Paper>
             <Box display="flex" justifyContent="right" alignItems="right">
               <FormControl>
-                <FormLabel id="demo-row-radio-buttons-group-label">
+                <FormLabel id="user-role-radio-group">
                   I would like to register as a
                 </FormLabel>
                 <RadioGroup
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
+                  aria-labelledby="user-role-radio-group"
+                  name="user-role-group"
+                  value={userRole}
+                  onChange={handleChangeUserRole}
                 >
                   <FormControlLabel
-                    value="employee"
+                    value={false}
                     control={<Radio />}
                     label="Job Seeker"
                     labelPlacement="start"
                   />
                   <FormControlLabel
-                    value="employer"
+                    value={true}
                     control={<Radio />}
                     label="Job Provider"
                     labelPlacement="start"

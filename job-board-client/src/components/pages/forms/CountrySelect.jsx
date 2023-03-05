@@ -1,13 +1,15 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import { Box, TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function CountrySelect() {
+export default function CountrySelect(props) {
+  const [value, setValue] = React.useState();
   return (
     <Autocomplete
-      id="country-select-demo"
-      // sx={{ width: 300 }}
+      id="country-select"
+      onChange={(event, newValue) => {
+        props.setCountry(newValue);
+      }}
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.label}
@@ -33,7 +35,7 @@ export default function CountrySelect() {
           label="Choose a country"
           inputProps={{
             ...params.inputProps,
-            autoComplete: "new-password", // disable autocomplete and autofill
+            autoComplete: "contury", // disable autocomplete and autofill
           }}
         />
       )}

@@ -11,10 +11,9 @@ const port = config.host.port;
 
 app.use(cors());
 app.use(morgan("dev"));
-app.use(express.json());
 
 setupProxies(app, verifyToekn, ROUTES);
 
 app.listen(port, () => {
-  console.log(`api gateway server on ${config.host.port}`);
+  console.log(`api gateway server on ${port}`);
 });

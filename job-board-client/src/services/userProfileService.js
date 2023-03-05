@@ -4,28 +4,6 @@ export default class UserProfileService {
     this.tokenStorage = tokenStorage;
   }
   async registerProfile(profile) {
-    profile = {
-      user: {
-        email: "test1@gmail.com",
-        password: "abcd1234",
-      },
-      profile: {
-        name: {
-          first: "WooRam",
-          last: "Jung",
-        },
-        contact: {
-          countryCode: "46",
-          phoneNumber: "0793007767",
-        },
-        address: {
-          country: "Sweden",
-          zipCode: "22472",
-          state: "Skane",
-          city: "Lund",
-        },
-      },
-    };
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_USER_REGISTER,
       {
