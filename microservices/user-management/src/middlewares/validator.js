@@ -19,10 +19,6 @@ export const validateCredential = [
 ];
 
 export const validateUpdateProfile = [
-  body("profile.comapny")
-    .if(body("user.role.provider").equals("true"))
-    .isLength({ min: 5, max: 20 })
-    .withMessage("Company name should be at least 5 characters"),
   body("profile.name.first")
     .trim()
     .isLength({ min: 1, max: 20 })

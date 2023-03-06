@@ -27,12 +27,11 @@ const theme = createTheme({
 
 export default function Login({ service }) {
   const { userAuthService, setUser } = service;
-  console.log(userAuthService);
   const navigate = useNavigate();
   const requestLogin = async (email, password) => {
     const resp = await userAuthService.login(email, password);
     if (resp.status === 200) {
-      setUser({ user: { userId: resp.data.userId, role: resp.data.role } });
+      setUser( { userId: resp.data.userId, role: resp.data.role } );
       navigate("/", { replace: true });
     } else {
       //TODO: error handle

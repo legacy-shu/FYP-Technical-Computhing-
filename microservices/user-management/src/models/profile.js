@@ -9,7 +9,6 @@ const profileSchema = new Schema(
       ref: "User",
     },
     logo: String,
-    company: String,
     name: {
       first: { type: String, required: true },
       last: { type: String, required: true },

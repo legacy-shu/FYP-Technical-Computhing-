@@ -6,7 +6,6 @@ export default class HttpClient {
   async requestAPI(path, config) {
     const url = `${this.baseURL}${path}`;
     try {
-      console.log(config);
       const res = await axios(url, config);
       // console.log({ status: res.status, data: res.data, url: res.config.url });
       return { status: res.status, data: res.data, url: res.config.url };

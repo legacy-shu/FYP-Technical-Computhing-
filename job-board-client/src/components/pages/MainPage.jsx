@@ -101,7 +101,7 @@ export default function MainPage({
       {isLoading ? <Progress></Progress> : null}
       <Grid bgcolor="primary.dark" container component="main" height="100hv">
         <CssBaseline />
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={4}>
           <Box style={{ maxHeight: "100vh", overflow: "auto" }}>
             {jobs.map((job) => (
               <JobCard
@@ -113,7 +113,7 @@ export default function MainPage({
             ))}
           </Box>
         </Grid>
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={8}>
           {!isLoading ? (
             detail ? (
               <Box sx={{ border: 1, m: 4 }}>

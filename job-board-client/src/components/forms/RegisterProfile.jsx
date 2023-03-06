@@ -20,6 +20,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import CountrySelect from "./CountrySelect";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -33,13 +34,18 @@ const theme = createTheme({
 });
 
 export default function RegisterProfile({ service }) {
+  const { userProfileService, setUser } = service;
+
   const [userRole, setUserRole] = useState(false);
   const [country, setCountry] = useState();
+  const navigate = useNavigate();
 
   const requestSignUp = async (profile) => {
-    const resp = await service.registerProfile(profile);
+    const resp = await userProfileService.registerProfile(profile);
     if (resp.status === 201) {
       console.log(resp.data);
+      setUser({ user: { userId: resp.data.userId, role: resp.data.role } });
+      navigate("/", { replace: true });
     } else {
       //TODO: error handle
       console.log(resp.message);

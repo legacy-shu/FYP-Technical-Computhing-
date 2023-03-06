@@ -4,7 +4,6 @@ import Login from "./components/forms/Login.jsx";
 import RegisterProfile from "./components/forms/RegisterProfile.jsx";
 import RegisterJobPost from "./components/forms/RegisterJobPost.jsx";
 import { useState, useEffect } from "react";
-
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
     userAuthService,
@@ -26,7 +25,6 @@ function App({ userAuthService, userProfileService, jobPostService }) {
       }
     }
     fetchData();
-    console.log("Reload");
   }, []);
 
   return (
@@ -45,7 +43,7 @@ function App({ userAuthService, userProfileService, jobPostService }) {
         <Route
           path="/register/user"
           element={
-            <RegisterProfile service={userProfileService}></RegisterProfile>
+            <RegisterProfile service={{userProfileService, setUser}}></RegisterProfile>
           }
         ></Route>
         <Route
