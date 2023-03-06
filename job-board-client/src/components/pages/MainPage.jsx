@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CssBaseline, Box, Grid, ThemeProvider, Paper } from "@mui/material";
+import { CssBaseline, Box, Grid, ThemeProvider, Paper, Stack } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import DetailMain from "../DetailMain";
@@ -55,6 +55,9 @@ export default function MainPage({
       setIsLoading(false);
       if (resp.status === 200) {
         setJobs(resp.data);
+        if (resp.data.length === 0) {
+          setDetail(undefined);
+        }
       } else {
         //TODO: handle error
         console.log(resp.message);
@@ -68,7 +71,6 @@ export default function MainPage({
     setTimeout(() => {
       setIsLoading(false);
       if (resp.status === 200) {
-        console.log(resp.data);
         setDetail(resp.data);
       } else {
         if (resp.status === 401 || resp.status === 419) {
@@ -123,11 +125,11 @@ export default function MainPage({
                   <DetailMain detail={detail.description}></DetailMain>
                 </Box>
               </Box>
-            ) : (
+            ) : jobs?.length > 0 ? (
               <Box sx={{ border: 1, m: 4 }}>
                 <EmptyPage></EmptyPage>
               </Box>
-            )
+            ) : <Stack>No search result</Stack>
           ) : null}
         </Grid>
       </Grid>

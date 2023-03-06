@@ -30,5 +30,12 @@ export async function login(req, res) {
     id: foundUser.id,
   });
 
-  res.status(200).json({ token, userId: foundUser.id, role: foundUser.role });
+  res
+    .status(200)
+    .json({
+      token,
+      email: foundUser.email,
+      userId: foundUser.id,
+      role: foundUser.role,
+    });
 }

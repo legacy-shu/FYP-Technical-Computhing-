@@ -10,6 +10,7 @@ import {
   Fab,
   ThemeProvider,
   Tooltip,
+  Grid,
 } from "@mui/material";
 import { styled, alpha, createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
@@ -39,7 +40,7 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 3,
-  marginRight: theme.spacing(3),
+  marginRight: theme.spacing(0),
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
@@ -60,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    width: "50vw",
+    width: "60vw",
   },
 }));
 export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
@@ -86,11 +87,16 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
           <Toolbar
             sx={{
               justifyContent: "space-between",
+              paddingTop: theme.spacing(1),
+              paddingBottom: theme.spacing(2),
+              "@media all": {
+                minHeight: 100,
+              },
             }}
           >
-            <Stack direction="row" alignItems="center">
+            <Stack justifyContent={"space-between"} paddingX={1}>
               <IconButton
-                size="large"
+                size="small"
                 edge="start"
                 color="inherit"
                 aria-label="logo"
@@ -126,36 +132,55 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
                 value={value}
               />
             </Search>
-            <Stack direction="row" alignItems="center" spacing={2}>
-              {user?.role?.provider ? (
-                <Tooltip title="Manage Job Post">
-                  <Fab size="medium" color="secondary.light">
-                    <DashboardIcon />
-                  </Fab>
-                </Tooltip>
-              ) : null}
-              {user ? (
-                <Tooltip title="LogOut">
-                  <Fab
-                    color="secondary.light"
-                    size="medium"
-                    onClick={handleClick}
-                  >
-                    <LogoutIcon />
-                  </Fab>
-                </Tooltip>
-              ) : (
-                <Tooltip title="LogIn">
-                  <Fab
-                    color="secondary.light"
-                    size="medium"
-                    onClick={handleClick}
-                  >
-                    <AccountCircleIcon />
-                  </Fab>
-                </Tooltip>
-              )}
-            </Stack>
+            <Grid
+              width={200}
+              marginRight={0}
+              marginLeft={0}
+              paddingTop={3}
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              justify="space-between"
+            >
+              <Grid item>
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  {user?.role?.provider ? (
+                    <Tooltip title="Manage Job Post">
+                      <Fab size="medium" color="secondary.light">
+                        <DashboardIcon />
+                      </Fab>
+                    </Tooltip>
+                  ) : null}
+                  {user ? (
+                    <Tooltip title="LogOut">
+                      <Fab
+                        color="secondary.light"
+                        size="medium"
+                        onClick={handleClick}
+                      >
+                        <LogoutIcon />
+                      </Fab>
+                    </Tooltip>
+                  ) : (
+                    <Tooltip title="LogIn">
+                      <Fab
+                        color="secondary.light"
+                        size="medium"
+                        onClick={handleClick}
+                      >
+                        <AccountCircleIcon />
+                      </Fab>
+                    </Tooltip>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid>
+                <Typography variant="h7" noWrap component="div" sx={{ p: 1 }}>
+                  {user?.email}
+                </Typography>
+              </Grid>
+            </Grid>
           </Toolbar>
         </AppBar>
       </Box>

@@ -17,10 +17,9 @@ function App({ userAuthService, userProfileService, jobPostService }) {
       const resp = await userAuthService.check();
       if (resp.status === 200) {
         setUser({
-          user: {
-            userId: resp.data.verified.id,
-            role: resp.data.verified.role,
-          },
+          email: resp.data.verified.email,
+          userId: resp.data.verified.id,
+          role: resp.data.verified.role,
         });
       }
     }
@@ -43,7 +42,9 @@ function App({ userAuthService, userProfileService, jobPostService }) {
         <Route
           path="/register/user"
           element={
-            <RegisterProfile service={{userProfileService, setUser}}></RegisterProfile>
+            <RegisterProfile
+              service={{ userProfileService, setUser }}
+            ></RegisterProfile>
           }
         ></Route>
         <Route

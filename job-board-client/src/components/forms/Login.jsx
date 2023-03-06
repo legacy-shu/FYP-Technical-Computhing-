@@ -31,7 +31,11 @@ export default function Login({ service }) {
   const requestLogin = async (email, password) => {
     const resp = await userAuthService.login(email, password);
     if (resp.status === 200) {
-      setUser( { userId: resp.data.userId, role: resp.data.role } );
+      setUser({
+        userId: resp.data.userId,
+        email: resp.data.email,
+        role: resp.data.role,
+      });
       navigate("/", { replace: true });
     } else {
       //TODO: error handle
