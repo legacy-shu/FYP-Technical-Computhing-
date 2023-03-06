@@ -44,11 +44,9 @@ export default function RegisterProfile({ service }) {
     const resp = await userProfileService.registerProfile(profile);
     if (resp.status === 201) {
       setUser({
-        user: {
-          userId: resp.data.userId,
-          email: resp.data.email,
-          role: resp.data.role,
-        },
+        userId: resp.data.userId,
+        email: resp.data.email,
+        role: resp.data.role,
       });
       navigate("/", { replace: true });
     } else {

@@ -46,7 +46,14 @@ export async function registerUser(req, res) {
       id: savedUser.id,
     });
 
-    res.status(201).send({ token, userId: savedUser.id, role: savedUser.role });
+    res
+      .status(201)
+      .send({
+        token,
+        userId: savedUser.id,
+        email: savedUser.email,
+        role: savedUser.role,
+      });
   } catch (err) {
     console.log(err);
     res.status(500).send({ err: err.message });
