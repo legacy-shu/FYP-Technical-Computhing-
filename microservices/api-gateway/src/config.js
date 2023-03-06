@@ -13,6 +13,9 @@ export const config = {
   jwt: {
     secretKey: required("JWT_SECRET"),
   },
+  base: {
+    url: required("HOST_URL", "http://localhost"),
+  },
   host: {
     port: parseInt(required("HOST_PORT", 8000)),
   },

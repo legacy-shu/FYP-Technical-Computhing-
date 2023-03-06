@@ -19,6 +19,7 @@ const jobPostSchema = new Schema(
       jobType: { type: String, required: true },
       posted: { type: Date, required: true },
       about: { type: String, required: true },
+      roleDetail: { type: String, required: true },
       responsibilities: { type: String, required: true },
       skills: { type: String, required: true },
       applicants: [],
@@ -28,9 +29,6 @@ const jobPostSchema = new Schema(
 );
 jobPostSchema.index({
   "description.title": "text",
-  "description.about": "text",
-  "description.responsibilities": "text",
-  "description.skills": "text",
 });
 useVirtualId(jobPostSchema);
 const JobPost = model("JobPost", jobPostSchema);

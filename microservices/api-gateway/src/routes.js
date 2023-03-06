@@ -2,8 +2,9 @@ import { config } from "./config.js";
 export const ROUTES = [
   {
     url: "/jobs/all",
+    auth: false,
     proxy: {
-      target: `http://localhost:${config.job_service.port}`,
+      target: `${config.base.url}:${config.job_service.port}`,
       changeOrigin: true,
       pathRewrite: {
         "/all": "",
@@ -14,30 +15,31 @@ export const ROUTES = [
     url: "/jobs",
     auth: true,
     proxy: {
-      target: `http://localhost:${config.job_service.port}`,
+      target: `${config.base.url}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
-  {
-    url: "/jobs/search",
-    auth: true,
-    proxy: {
-      target: `http://localhost:${config.job_service.port}`,
-      changeOrigin: true,
-    },
-  },
+  // {
+  //   url: "/jobs/search",
+  //   auth: false,
+  //   proxy: {
+  //     target: `${config.base.url}:${config.job_service.port}`,
+  //     changeOrigin: true,
+  //   },
+  // },
   {
     url: "/jobs/:userId/posted",
     auth: true,
     proxy: {
-      target: `http://localhost:${config.job_service.port}`,
+      target: `${config.base.url}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
   {
     url: "/users/signup",
+    auth: false,
     proxy: {
-      target: `http://localhost:${config.user_service.port}`,
+      target: `${config.base.url}:${config.user_service.port}`,
       changeOrigin: true,
       pathRewrite: {
         "/signup": "",
@@ -48,22 +50,15 @@ export const ROUTES = [
     url: "/users",
     auth: true,
     proxy: {
-      target: `http://localhost:${config.user_service.port}`,
-      changeOrigin: true,
-    },
-  },
-  {
-    url: "/auth/check",
-    auth: true,
-    proxy: {
-      target: `http://localhost:${config.user_service.port}`,
+      target: `${config.base.url}:${config.user_service.port}`,
       changeOrigin: true,
     },
   },
   {
     url: "/auth/login",
+    auth: false,
     proxy: {
-      target: `http://localhost:${config.user_service.port}`,
+      target: `${config.base.url}:${config.user_service.port}`,
       changeOrigin: true,
     },
   },

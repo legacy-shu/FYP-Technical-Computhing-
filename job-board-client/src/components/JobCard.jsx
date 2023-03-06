@@ -29,7 +29,7 @@ export default function JobCard({ job, onClick, id }) {
     <ThemeProvider theme={theme}>
       <CardActionArea onClick={clickedCard}>
         <Box>
-          <Paper sx={{ border: 1, mt: 4, ml: 4, mr: 4 }} variant="outlined">
+          <Paper sx={{ border: 1, m: 4}} variant="outlined">
             <CardContent>
               <Typography
                 sx={{ fontSize: 30, fontWeight: "bold" }}

@@ -29,6 +29,16 @@ export default function DetailMain({ detail }) {
               variant="subtitle1"
               component="div"
             >
+              Role Detail:
+            </Typography>
+
+            <Typography sx={{ p: 1 }}>{detail?.roleDetail}</Typography>
+
+            <Typography
+              sx={{ mt: 5, fontSize: 30, fontWeight: "bold" }}
+              variant="subtitle1"
+              component="div"
+            >
               Responsibilities:
             </Typography>
 

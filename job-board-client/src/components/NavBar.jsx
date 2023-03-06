@@ -16,7 +16,7 @@ import LooksIcon from "@mui/icons-material/Looks";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -36,7 +36,8 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
-  width: "100vw",
+  marginRight: theme.spacing(2),
+  width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
@@ -59,12 +60,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: "70vw",
   },
 }));
-export default function NavBar({ setKeyword }) {
+export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
+  const navigate = useNavigate();
   const [value, setValue] = useState("");
   const handleChage = (event) => {
     setValue(event.target.value);
   };
-
+  const handleClick = () => {
+    if (user) {
+      setUser(undefined);
+      userAuthService.logout();
+      navigate("/", { replace: true });
+    } else {
+      navigate("/login", { replace: true });
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" bgcolor="primary.light">
@@ -111,14 +121,11 @@ export default function NavBar({ setKeyword }) {
               />
             </Search>
           </Box>
-
           <Box sx={{ m: 2 }}>
-            <Link to={"/login"}>
-              <Fab color="secondary" variant="extended">
-                <AccountCircleIcon sx={{ mr: 1 }} />
-                Login
-              </Fab>
-            </Link>
+            <Fab color="secondary" variant="extended" onClick={handleClick}>
+              <AccountCircleIcon sx={{ mr: 1 }} />
+              {user ? "LogOut" : "LogIn"}
+            </Fab>
           </Box>
         </Toolbar>
       </AppBar>

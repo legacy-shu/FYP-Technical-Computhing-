@@ -14,6 +14,7 @@ import {
   FormControl,
   FormLabel,
   Paper,
+  Link,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
@@ -247,6 +248,11 @@ export default function RegisterProfile({ service }) {
             >
               Register Profile
             </Button>
+            <Grid my={2} container justifyContent="flex-end">
+              <Link href="/" variant="h6">
+                {"Don't want to register a profile now, Go home"}
+              </Link>
+            </Grid>
           </Box>
         </Box>
       </Container>

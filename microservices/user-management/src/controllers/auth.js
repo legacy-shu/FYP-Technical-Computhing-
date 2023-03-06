@@ -1,17 +1,13 @@
 import { User } from "../models/index.js";
 import { compare } from "bcrypt";
 import { createJwtToken } from "../utils/jwtCreator.js";
-export async function check(req, res) {
-  //TODO: implement later
-  console.log(req.body);
-  console.log(res.body);
-  //console.log(res);
-  // const user = await User.findById(id);
-  // if (!user) {
-  //   return res.status(404).json({ message: "User not found" });
-  // }
-  res.status(200).json({ token: req.headers.authorization.split(" ")[1] });
-}
+// export async function check(req, res) {
+//   const user = await User.findById(id);
+//   if (!user) {
+//     return res.status(404).json({ message: "User not found" });
+//   }
+//   res.status(200).json({ token: req.headers.authorization.split(" ")[1] });
+// }
 
 export async function login(req, res) {
   const { user } = req.body;

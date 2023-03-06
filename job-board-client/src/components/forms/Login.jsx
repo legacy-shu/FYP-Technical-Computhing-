@@ -13,6 +13,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,10 +26,14 @@ const theme = createTheme({
 });
 
 export default function Login({ service }) {
+  const { userAuthService, setUser } = service;
+  console.log(userAuthService);
+  const navigate = useNavigate();
   const requestLogin = async (email, password) => {
-    const resp = await service.login(email, password);
+    const resp = await userAuthService.login(email, password);
     if (resp.status === 200) {
-      console.log(resp.data);
+      setUser({ user: { userId: resp.data.userId, role: resp.data.role } });
+      navigate("/", { replace: true });
     } else {
       //TODO: error handle
       console.log(resp);
@@ -111,10 +116,15 @@ export default function Login({ service }) {
                 >
                   Login
                 </Button>
-                <Grid container>
-                  <Grid item>
-                    <Link href="/register/user" variant="body">
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Link href="/register/user" variant="h6">
                       {"Don't have an account? Sign Up"}
+                    </Link>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Link href="/" variant="h6">
+                      {"Don't want to login now, Go home"}
                     </Link>
                   </Grid>
                 </Grid>

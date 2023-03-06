@@ -1,11 +1,12 @@
 import { createProxyMiddleware } from "http-proxy-middleware";
 export const setupProxies = (app, verifyToekn, routes) => {
+  app.use("/jobs/search", createProxyMiddleware({target:"http://localhost:8002"}))
   routes.forEach((route) => {
-    if (route.auth) {
-      app.use(route.url, verifyToekn, createProxyMiddleware(route.proxy));
-    } else {
-      // don't need to check auth login/signup, jobs/all
+    console.log(route.auth);
+    if (route.auth == false) {
       app.use(route.url, createProxyMiddleware(route.proxy));
+    } else {
+      app.use(route.url, verifyToekn, createProxyMiddleware(route.proxy));
     }
   });
 };
