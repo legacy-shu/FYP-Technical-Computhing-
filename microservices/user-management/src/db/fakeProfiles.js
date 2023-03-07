@@ -68,7 +68,7 @@ export const generateFakeUsersAndProfiles = async (datacount) => {
                 (p) => p.user.toHexString() === user._id.toHexString()
               )[0].address,
               salary: `${faker.phone.number("2#000-6#000")} / Per Year`,
-              jobType: "Full-Time",
+              jobType: "Full-time(permanent,office)",
               posted: faker.date.between(
                 "2023-01-01T00:00:00.000Z",
                 "2023-03-020T00:00:00.000Z"

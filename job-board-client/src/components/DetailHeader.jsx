@@ -8,14 +8,14 @@ import {
 } from "@mui/material";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { createTheme } from "@mui/material/styles";
-import { blueGrey } from "@mui/material/colors";
+import { blueGrey, cyan } from "@mui/material/colors";
 const theme = createTheme({
   palette: {
     primary: {
       main: blueGrey[900],
     },
     secondary: {
-      main: blueGrey[500],
+      main: cyan[800],
     },
   },
 });
@@ -23,7 +23,7 @@ export default function DetailHeader({ detail }) {
   return (
     <ThemeProvider theme={theme}>
       <Box>
-        <Paper sx={{ p:1 }} square>
+        <Paper sx={{ p: 1 }} square>
           <CardContent>
             <Typography
               sx={{ fontSize: 35, fontWeight: "bold" }}
@@ -34,7 +34,7 @@ export default function DetailHeader({ detail }) {
             <Typography
               mt={1}
               sx={{ fontSize: 25, fontWeight: "bold" }}
-              color="secondary.light"
+              color="secondary.dark"
               gutterBottom
             >
               {detail?.company}

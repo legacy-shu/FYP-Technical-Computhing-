@@ -66,7 +66,9 @@ export async function searchJobPosts(req, res) {
 export async function getJobsByUserId(req, res) {
   try {
     const userId = req.params.userId;
-    const foundAjobs = await JobPost.find({ "description.userId": userId });
+    const foundAjobs = await JobPost.find({
+      "description.userId": userId,
+    }).sort({ "description.posted": "desc" });
     if (!foundAjobs) {
       return res.status(404).json({ message: `Job Post not found` });
     }

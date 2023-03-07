@@ -18,7 +18,6 @@ export default class UserProfileService {
   }
 
   async getUser(userId) {
-    userId = "63ffbe52eaf36a4b2d89e84e";
     const token = this.tokenStorage.getToken();
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_USER + `/${userId}`,

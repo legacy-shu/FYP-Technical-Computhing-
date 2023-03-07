@@ -4,6 +4,7 @@ import Login from "./components/forms/Login.jsx";
 import RegisterProfile from "./components/forms/RegisterProfile.jsx";
 import RegisterJobPost from "./components/forms/RegisterJobPost.jsx";
 import { useState, useEffect } from "react";
+import DashboardPage from "./components/pages/DashboardPage.jsx";
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
     userAuthService,
@@ -50,6 +51,16 @@ function App({ userAuthService, userProfileService, jobPostService }) {
         <Route
           path="/register/job"
           element={<RegisterJobPost></RegisterJobPost>}
+        ></Route>
+        <Route
+          path="/dashboard/"
+          element={
+            <DashboardPage
+              {...services}
+              user={user}
+              setUser={setUser}
+            ></DashboardPage>
+          }
         ></Route>
       </Routes>
     </BrowserRouter>

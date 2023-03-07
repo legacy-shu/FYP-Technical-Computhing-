@@ -64,7 +64,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     width: "60vw",
   },
 }));
-export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
+export default function MainNavBar({
+  setKeyword,
+  user,
+  setUser,
+  userAuthService,
+}) {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
   const handleChage = (event) => {
@@ -101,7 +106,7 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
                 color="inherit"
                 aria-label="logo"
                 onClick={() => {
-                  navigate("/", { replace: true });
+                  window.location.reload();
                 }}
               >
                 <LooksIcon></LooksIcon>
@@ -147,7 +152,13 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
                 <Stack direction="row" alignItems="center" spacing={2}>
                   {user?.role?.provider ? (
                     <Tooltip title="Manage Job Post">
-                      <Fab size="medium" color="secondary.light">
+                      <Fab
+                        size="medium"
+                        color="secondary.light"
+                        onClick={() => {
+                          navigate("/dashboard", { replace: false });
+                        }}
+                      >
                         <DashboardIcon />
                       </Fab>
                     </Tooltip>
@@ -165,11 +176,13 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
                   ) : (
                     <Tooltip title="LogIn">
                       <Fab
+                        variant="extended"
                         color="secondary.light"
                         size="medium"
                         onClick={handleClick}
                       >
                         <AccountCircleIcon />
+                        LogIn
                       </Fab>
                     </Tooltip>
                   )}
@@ -177,11 +190,9 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
               </Grid>
               <Grid>
                 <Typography
-                  variant="h7"
-                  noWrap
-                  component="div"
+                  mt={2}
+                  sx={{ fontSize: 14, fontWeight: "bold" }}
                   align="right"
-                  sx={{ p: 1 }}
                 >
                   {user?.email}
                 </Typography>

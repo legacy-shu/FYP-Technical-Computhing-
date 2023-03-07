@@ -5,9 +5,11 @@ import {
   CardContent,
   ThemeProvider,
   CardActionArea,
+  Stack,
+  Button,
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { blueGrey } from "@mui/material/colors";
+import { blueGrey, cyan } from "@mui/material/colors";
 import moment from "moment";
 
 const theme = createTheme({
@@ -16,11 +18,18 @@ const theme = createTheme({
       main: blueGrey[500],
     },
     secondary: {
-      main: blueGrey[800],
+      main: cyan[900],
     },
   },
 });
-export default function JobCard({ job, onClick, id }) {
+export default function JobCard({
+  job,
+  onClick,
+  id,
+  provider,
+  clickDelete,
+  clickEdit,
+}) {
   const description = job?.description || {};
   const { company, title, address, salary, posted } = description;
   const location = `${address?.city},${address?.country}`;
@@ -31,7 +40,7 @@ export default function JobCard({ job, onClick, id }) {
     <ThemeProvider theme={theme}>
       <CardActionArea onClick={clickedCard}>
         <Box>
-          <Paper sx={{ border: 1, m: 4 }} variant="outlined">
+          <Paper elevation={2} sx={{ border: 0, m: 4 }}>
             <CardContent>
               <Typography
                 sx={{ fontSize: 30, fontWeight: "bold" }}
@@ -42,14 +51,14 @@ export default function JobCard({ job, onClick, id }) {
               <Typography
                 mt={1}
                 sx={{ fontSize: 20, fontWeight: "bold" }}
-                color="secondary"
+                color="secondary.light"
                 gutterBottom
               >
                 {company}
               </Typography>
               <Typography
-                sx={{ fontSize: 15, fontWeight: "bold" }}
-                color="secondary.light"
+                sx={{ fontSize: 16, fontWeight: "bold" }}
+                color="primary.dark"
               >
                 {location}
               </Typography>
@@ -60,11 +69,51 @@ export default function JobCard({ job, onClick, id }) {
               <Typography
                 mt={1}
                 sx={{ fontSize: 12, fontWeight: "bold" }}
-                align="right"
+                align="left"
               >
                 {moment(posted, "YYYY-MM-DDTHH:mm:ssZ").fromNow()}
                 <br />
               </Typography>
+              {provider ? (
+                <Stack
+                  sx={{ p: 2, alignItems: "right" }}
+                  direction="row"
+                  spacing={2}
+                  justifyContent="end"
+                >
+                  <Button
+                    component="span"
+                    variant="outlined"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      event.preventDefault();
+                      clickEdit(id);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    component="span"
+                    variant="outlined"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      event.preventDefault();
+                      clickDelete(id);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </Stack>
+              ) : (
+                <Typography
+                  mt={1}
+                  sx={{ fontSize: 20, fontWeight: "bold" }}
+                  align="right"
+                  color="secondary.dark"
+                >
+                  See Detail
+                </Typography>
+              )}
             </CardContent>
           </Paper>
         </Box>

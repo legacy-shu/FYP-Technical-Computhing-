@@ -15,7 +15,7 @@ const theme = createTheme({
 export default function EmptyPage() {
   return (
     <ThemeProvider theme={theme}>
-      <Paper>
+      <Paper elevation={2} sx={{ border: 0, m: 4 }}>
         <Box sx={{ p: 5 }}>
           <Typography sx={{ p: 5 }} variant="h2" color="secondary">
             Click on the card on the left to view the job details

@@ -17,7 +17,7 @@ export default function DetailList({ detail }) {
     <List sx={{ bgcolor: "background.paper" }}>
       <ListItem>
         <ListItemAvatar>
-          <Avatar>
+          <Avatar sx={{ bgcolor: "secondary.dark" }}>
             <AttachMoneyIcon />
           </Avatar>
         </ListItemAvatar>
@@ -28,7 +28,7 @@ export default function DetailList({ detail }) {
 
       <ListItem>
         <ListItemAvatar>
-          <Avatar>
+          <Avatar sx={{ bgcolor: "secondary.dark" }}>
             <PlaceIcon />
           </Avatar>
         </ListItemAvatar>
@@ -42,7 +42,7 @@ export default function DetailList({ detail }) {
 
       <ListItem>
         <ListItemAvatar>
-          <Avatar>
+          <Avatar sx={{ bgcolor: "secondary.dark" }}>
             <WorkIcon />
           </Avatar>
         </ListItemAvatar>
@@ -56,7 +56,7 @@ export default function DetailList({ detail }) {
 
       <ListItem>
         <ListItemAvatar>
-          <Avatar>
+          <Avatar sx={{ bgcolor: "secondary.dark" }}>
             <ScheduleSendIcon />
           </Avatar>
         </ListItemAvatar>

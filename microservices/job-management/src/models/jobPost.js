@@ -7,7 +7,6 @@ const jobPostSchema = new Schema(
       userId: { type: String, required: true },
       title: { type: String, required: true },
       email: { type: String, required: true },
-      logo: String,
       company: { type: String, required: true },
       address: {
         country: { type: String, required: true },
