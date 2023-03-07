@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
+import moment from "moment";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -20,7 +22,7 @@ const theme = createTheme({
 });
 export default function JobCard({ job, onClick, id }) {
   const description = job?.description || {};
-  const { company, title, address, salary } = description;
+  const { company, title, address, salary, posted } = description;
   const location = `${address?.city},${address?.country}`;
   const clickedCard = () => {
     onClick(id);
@@ -29,7 +31,7 @@ export default function JobCard({ job, onClick, id }) {
     <ThemeProvider theme={theme}>
       <CardActionArea onClick={clickedCard}>
         <Box>
-          <Paper sx={{ border: 1, m: 4}} variant="outlined">
+          <Paper sx={{ border: 1, m: 4 }} variant="outlined">
             <CardContent>
               <Typography
                 sx={{ fontSize: 30, fontWeight: "bold" }}
@@ -53,6 +55,14 @@ export default function JobCard({ job, onClick, id }) {
               </Typography>
               <Typography mt={1} sx={{ fontSize: 15, fontWeight: "bold" }}>
                 {salary}
+                <br />
+              </Typography>
+              <Typography
+                mt={1}
+                sx={{ fontSize: 12, fontWeight: "bold" }}
+                align="right"
+              >
+                {moment(posted, "YYYY-MM-DDTHH:mm:ssZ").fromNow()}
                 <br />
               </Typography>
             </CardContent>

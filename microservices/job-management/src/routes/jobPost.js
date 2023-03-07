@@ -3,6 +3,9 @@ import * as jobPostController from "../controllers/jobPost.js";
 
 const router = express.Router();
 
+router.post("/seedonly", jobPostController.seedonly);
+router.get("/seedonly/drop", jobPostController.seedonlyDorpCollection);
+
 router.post("/", jobPostController.registerJobPost);
 router.post("/:jobId", jobPostController.applyJob);
 

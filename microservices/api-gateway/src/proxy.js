@@ -1,6 +1,12 @@
 import { createProxyMiddleware } from "http-proxy-middleware";
+import {config} from "./config.js";
 export const setupProxies = (app, verifyToekn, routes) => {
-  app.use("/jobs/search", createProxyMiddleware({target:"http://localhost:8002"}))
+  app.use(
+    "jobs/seedonly",
+    createProxyMiddleware({
+      target: `${config.base.url}:${config.job_service.port}`,
+    })
+  );
   routes.forEach((route) => {
     console.log(route.auth);
     if (route.auth == false) {

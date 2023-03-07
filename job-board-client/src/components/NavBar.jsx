@@ -176,7 +176,13 @@ export default function NavBar({ setKeyword, user, setUser, userAuthService }) {
                 </Stack>
               </Grid>
               <Grid>
-                <Typography variant="h7" noWrap component="div" sx={{ p: 1 }}>
+                <Typography
+                  variant="h7"
+                  noWrap
+                  component="div"
+                  align="right"
+                  sx={{ p: 1 }}
+                >
                   {user?.email}
                 </Typography>
               </Grid>

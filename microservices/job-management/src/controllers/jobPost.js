@@ -1,5 +1,25 @@
 import JobPost from "../models/jobPost.js";
 
+export async function seedonlyDorpCollection(req, res) {
+  try {
+    await JobPost.deleteMany({});
+    res.status(200).json({ ok: "droped collection" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err: err.message });
+  }
+}
+export async function seedonly(req, res) {
+  try {
+    const { description } = req.body;
+    const savedJobPosting = await new JobPost({ description }).save();
+    res.status(201).json({ jobposting: savedJobPosting });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err: err.message });
+  }
+}
+
 export async function registerJobPost(req, res) {
   try {
     const { description } = req.body;
@@ -18,7 +38,7 @@ export async function applyJob(req, res) {
 
 export async function getAllJobs(req, res) {
   try {
-    const result = await JobPost.find().sort({ _id: "desc" });
+    const result = await JobPost.find().sort({ "description.posted": "desc" });
     if (!result) {
       return res.status(404).json({ message: `Job Post not found` });
     }

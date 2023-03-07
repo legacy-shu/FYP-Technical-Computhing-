@@ -12,7 +12,7 @@ function required(key, defaultValue = undefined) {
 export const config = {
   jwt: {
     secretKey: required("JWT_SECRET"),
-    expiresInSec: parseInt(required("JWT_EXPIRES_SEC", 60)),
+    expiresInSec: parseInt(required("JWT_EXPIRES_SEC", 60000)),
   },
   bcrypt: {
     saltRounds: parseInt(required("BCRYPT_SALT_ROUNDS", 12)),
@@ -22,5 +22,8 @@ export const config = {
   },
   db: {
     host: required("DB_HOST"),
+  },
+  seed: {
+    url: required("SEED_URL"),
   },
 };

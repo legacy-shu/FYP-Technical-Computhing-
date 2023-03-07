@@ -8,14 +8,13 @@ const profileSchema = new Schema(
       required: true,
       ref: "User",
     },
-    logo: String,
     name: {
       first: { type: String, required: true },
       last: { type: String, required: true },
     },
     contact: {
-      countryCode: { type: Number, required: true },
-      phoneNumber: { type: Number, required: true },
+      countryCode: { type: String, required: true },
+      phoneNumber: { type: String, required: true },
     },
     address: {
       country: { type: String, required: true },

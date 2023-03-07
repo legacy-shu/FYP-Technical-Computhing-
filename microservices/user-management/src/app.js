@@ -3,6 +3,7 @@ import "express-async-errors";
 import { config } from "../config.js";
 import { connectDB } from "./db/database.js";
 import { user, auth } from "./routes/index.js";
+import { generateFakeUsersAndProfiles } from "./db/fakeProfiles.js";
 
 const StartServer = async () => {
   try {
@@ -17,6 +18,7 @@ const StartServer = async () => {
 
     app.listen(config.host.port, () => {
       console.log(`Server listning on port ${config.host.port}`);
+      generateFakeUsersAndProfiles(30);
     });
   } catch (err) {
     console.log(err);

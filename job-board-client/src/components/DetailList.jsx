@@ -10,6 +10,8 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PlaceIcon from "@mui/icons-material/Place";
 import WorkIcon from "@mui/icons-material/Work";
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
+import moment from "moment";
+
 export default function DetailList({ detail }) {
   return (
     <List sx={{ bgcolor: "background.paper" }}>
@@ -59,7 +61,10 @@ export default function DetailList({ detail }) {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="POSTED" />
-        <ListItemText style={{ textAlign: "right" }} primary={detail?.posted} />
+        <ListItemText
+          style={{ textAlign: "right" }}
+          primary={moment(detail?.posted, "YYYY-MM-DDTHH:mm:ssZ").fromNow()}
+        />
       </ListItem>
       <Divider />
     </List>
