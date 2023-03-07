@@ -19,14 +19,14 @@ export const ROUTES = [
       changeOrigin: true,
     },
   },
-  // {
-  //   url: "/jobs/search",
-  //   auth: false,
-  //   proxy: {
-  //     target: `${config.base.url}:${config.job_service.port}`,
-  //     changeOrigin: true,
-  //   },
-  // },
+  {
+    url: "/jobs/search",
+    auth: false,
+    proxy: {
+      target: `${config.base.url}:${config.job_service.port}`,
+      changeOrigin: true,
+    },
+  },
   {
     url: "/jobs/:userId/posted",
     auth: true,

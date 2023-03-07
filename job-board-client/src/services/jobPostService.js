@@ -18,10 +18,12 @@ export default class JobPostService {
   }
 
   async searchJobPosts(keyword) {
+    const token = this.tokenStorage.getToken();
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_JOB_SEARCH + `?keyword=${keyword}`,
       {
         method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     return resp;

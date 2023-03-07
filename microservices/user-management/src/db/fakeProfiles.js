@@ -63,7 +63,7 @@ export const generateFakeUsersAndProfiles = async (datacount) => {
               userId: user.id,
               title: faker.name.jobTitle(),
               email: user.email,
-              company: faker.company.name(),
+              company: `${faker.company.name()}, ${faker.name.jobType()}`,
               address: profiles.filter(
                 (p) => p.user.toHexString() === user._id.toHexString()
               )[0].address,
@@ -73,10 +73,10 @@ export const generateFakeUsersAndProfiles = async (datacount) => {
                 "2023-01-01T00:00:00.000Z",
                 "2023-03-020T00:00:00.000Z"
               ),
-              about: faker.lorem.paragraph(4),
-              roleDetail: faker.lorem.paragraph(6),
-              responsibilities: faker.lorem.paragraph(6),
-              skills: faker.lorem.paragraph(4),
+              about: faker.lorem.paragraph(6),
+              roleDetail: faker.lorem.paragraphs(10),
+              responsibilities: faker.lorem.paragraph(8),
+              skills: faker.lorem.paragraph(5),
             },
           })
         );
