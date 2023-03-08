@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./components/pages/MainPage.jsx";
 import Login from "./components/forms/Login.jsx";
 import RegisterProfile from "./components/forms/RegisterProfile.jsx";
-import RegisterJobPost from "./components/forms/RegisterJobPost.jsx";
 import { useState, useEffect } from "react";
 import DashboardPage from "./components/pages/DashboardPage.jsx";
 function App({ userAuthService, userProfileService, jobPostService }) {
@@ -47,10 +46,6 @@ function App({ userAuthService, userProfileService, jobPostService }) {
               service={{ userProfileService, setUser }}
             ></RegisterProfile>
           }
-        ></Route>
-        <Route
-          path="/register/job"
-          element={<RegisterJobPost></RegisterJobPost>}
         ></Route>
         <Route
           path="/dashboard/"

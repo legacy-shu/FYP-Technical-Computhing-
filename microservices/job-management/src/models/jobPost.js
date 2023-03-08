@@ -28,6 +28,14 @@ const jobPostSchema = new Schema(
 );
 jobPostSchema.index({
   "description.title": "text",
+  "description.salary": "text",
+  "description.address.city": "text",
+  "description.address.country": "text",
+  "description.roleDetail": "text",
+  "description.responsibilities": "text",
+  "description.company": "text",
+  "description.about": "text",
+  "description.skills": "text",
 });
 useVirtualId(jobPostSchema);
 const JobPost = model("JobPost", jobPostSchema);

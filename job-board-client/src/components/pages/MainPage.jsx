@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
 import {
   Typography,
   CssBaseline,
   Box,
   Grid,
   ThemeProvider,
-  Stack,
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
@@ -18,6 +16,7 @@ import EmptyPage from "./EmptyPage";
 import Footer from "../Footer";
 import Progress from "../Progress";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const theme = createTheme({
   palette: {
