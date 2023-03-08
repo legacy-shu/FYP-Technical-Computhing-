@@ -1,5 +1,6 @@
 import express from "express";
 import "express-async-errors";
+import cors from "cors";
 import { config } from "../config.js";
 import { connectDB } from "./db/database.js";
 import { user, auth } from "./routes/index.js";
@@ -12,6 +13,7 @@ const StartServer = async () => {
 
     const app = express();
     app.use(express.json());
+    app.use(cors());
 
     app.use("/auth", auth);
     app.use("/users", user);

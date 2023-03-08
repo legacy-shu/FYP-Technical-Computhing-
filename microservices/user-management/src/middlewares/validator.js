@@ -21,34 +21,34 @@ export const validateCredential = [
 export const validateUpdateProfile = [
   body("profile.name.first")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("First name should be at least 1 characters"),
   body("profile.name.last")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("Last name should be at least 1 characters"),
   body("profile.contact.countryCode")
     .trim()
-    .isLength({ min: 1, max: 4 })
+    .isLength({ min: 1, max: 10 })
     .withMessage("Country Code should be between 1 - 4 digits"),
   body("profile.contact.phoneNumber")
     .isMobilePhone()
     .withMessage("Input correct Phone Number"),
   body("profile.address.country")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("Country is missing"),
   body("profile.address.zipCode")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("Zip code is missing"),
   body("profile.address.state")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("State is missing"),
   body("profile.address.city")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 50 })
     .withMessage("City is missing"),
   validate,
 ];

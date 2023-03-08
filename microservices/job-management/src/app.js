@@ -2,6 +2,7 @@ import express from "express";
 import jobs from "./routes/jobPost.js";
 import { config } from "../config.js";
 import "express-async-errors";
+import cors from "cors";
 import { connectDB } from "./db/database.js";
 
 const StartServer = async () => {
@@ -11,6 +12,7 @@ const StartServer = async () => {
 
     const app = express();
     app.use(express.json());
+    app.use(cors());
 
     app.use("/jobs", jobs);
 
