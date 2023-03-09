@@ -10,15 +10,15 @@ import {
   Fab,
   ThemeProvider,
   Tooltip,
-  Grid,
 } from "@mui/material";
 import { styled, alpha, createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
 import SearchIcon from "@mui/icons-material/Search";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LogoutIcon from "@mui/icons-material/Logout";
+import Face6Icon from "@mui/icons-material/Face6";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const theme = createTheme({
       main: blueGrey[900],
     },
     secondary: {
-      main: blueGrey[800],
+      main: blueGrey[50],
     },
   },
 });
@@ -72,10 +72,16 @@ export default function MainNavBar({
 }) {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
+  
   const handleChage = (event) => {
     setValue(event.target.value);
   };
-  const handleClick = () => {
+  
+  const handleViewProfile = () => {
+    navigate("/profile", { replace: true });
+  };
+  
+  const handleLoginOut = () => {
     if (user) {
       setUser(undefined);
       userAuthService.logout();
@@ -137,67 +143,55 @@ export default function MainNavBar({
                 value={value}
               />
             </Search>
-            <Grid
-              width={200}
-              marginRight={0}
-              marginLeft={0}
-              paddingTop={3}
-              container
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-              justify="space-between"
-            >
-              <Grid item>
-                <Stack direction="row" alignItems="center" spacing={2}>
-                  {user?.role?.provider ? (
-                    <Tooltip title="Manage Job Post">
-                      <Fab
-                        size="medium"
-                        color="secondary.light"
-                        onClick={() => {
-                          navigate("/dashboard", { replace: false });
-                        }}
-                      >
-                        <DashboardIcon />
-                      </Fab>
-                    </Tooltip>
-                  ) : null}
-                  {user ? (
-                    <Tooltip title="LogOut">
-                      <Fab
-                        color="secondary.light"
-                        size="medium"
-                        onClick={handleClick}
-                      >
-                        <LogoutIcon />
-                      </Fab>
-                    </Tooltip>
-                  ) : (
-                    <Tooltip title="LogIn">
-                      <Fab
-                        variant="extended"
-                        color="secondary.light"
-                        size="medium"
-                        onClick={handleClick}
-                      >
-                        <AccountCircleIcon />
-                        LogIn
-                      </Fab>
-                    </Tooltip>
-                  )}
+            <Stack direction="row" alignItems="center" spacing={2}>
+              {user?.role?.provider ? (
+                <Tooltip title="Manage Job Post">
+                  <Fab
+                    size="small"
+                    color="primary"
+                    onClick={() => {
+                      navigate("/dashboard", { replace: false });
+                    }}
+                  >
+                    <DashboardIcon />
+                  </Fab>
+                </Tooltip>
+              ) : null}
+              {user ? (
+                <Stack direction="row" spacing={2}>
+                  <Tooltip title="Profile">
+                    <Fab
+                      color="primary"
+                      size="small"
+                      onClick={handleViewProfile}
+                    >
+                      <Face6Icon />
+                    </Fab>
+                  </Tooltip>
+                  <Tooltip title="LogOut">
+                    <Fab
+                      color="primary"
+                      size="small"
+                      onClick={handleLoginOut}
+                    >
+                      <LogoutIcon />
+                    </Fab>
+                  </Tooltip>
                 </Stack>
-              </Grid>
-              <Grid>
-                <Typography
-                  mt={2}
-                  sx={{ fontSize: 14, fontWeight: "bold" }}
-                  align="right"
-                >
-                  {user?.email}
-                </Typography>
-              </Grid>
-            </Grid>
+              ) : (
+                <Tooltip title="LogIn">
+                  <Fab
+                    variant="extended"
+                    color="primary"
+                    size="medium"
+                    onClick={handleLoginOut}
+                  >
+                    <LoginIcon />
+                    LogIn
+                  </Fab>
+                </Tooltip>
+              )}
+            </Stack>
           </Toolbar>
         </AppBar>
       </Box>

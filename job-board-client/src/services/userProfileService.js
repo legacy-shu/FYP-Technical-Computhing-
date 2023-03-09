@@ -30,25 +30,6 @@ export default class UserProfileService {
   }
 
   async updateUser(userId, body) {
-    body = {
-      profile: {
-        name: {
-          first: "WooRam",
-          last: "LundaJung",
-        },
-        contact: {
-          countryCode: "44",
-          phoneNumber: "0793007767",
-        },
-        address: {
-          country: "UK",
-          zipCode: "22472",
-          state: "Skane",
-          city: "Lund",
-        },
-      },
-    };
-    userId = "63ffbe52eaf36a4b2d89e84e";
     const token = this.tokenStorage.getToken();
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_USER + `/${userId}`,

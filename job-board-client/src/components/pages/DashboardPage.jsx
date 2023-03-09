@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import JobCard from "../JobCard";
 import Progress from "../Progress";
-import DashboardNavBar from "../DashboardNavNar";
+import DashboardNavBar from "../DashboardNavBar";
 import EditJobPost from "../forms/EditPostForm";
 import RegisterJobPost from "../forms/RegisterJobPost";
 import AlertDialog from "../AlertDialog";
@@ -131,6 +131,7 @@ export default function DashboardPage({
         userAuthService={userAuthService}
         setUser={setUser}
         setPostMode={setPostMode}
+        postMode={postMode}
       ></DashboardNavBar>
       {isLoading ? <Progress></Progress> : null}
       <Grid bgcolor="primary.light" container component="main" height="100hv">

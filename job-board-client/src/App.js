@@ -4,6 +4,9 @@ import Login from "./components/forms/Login.jsx";
 import RegisterProfile from "./components/forms/RegisterProfile.jsx";
 import { useState, useEffect } from "react";
 import DashboardPage from "./components/pages/DashboardPage.jsx";
+import ProfilePage from "./components/pages/ProfilePage.jsx";
+import Doc from "./components/pages/test";
+
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
     userAuthService,
@@ -11,6 +14,7 @@ function App({ userAuthService, userProfileService, jobPostService }) {
     jobPostService,
   };
   const [user, setUser] = useState(undefined);
+  const [userProfile, setUserProfile] = useState(undefined);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +29,19 @@ function App({ userAuthService, userProfileService, jobPostService }) {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (!user) {
+        return;
+      }
+      const resp = await userProfileService.getUser(user.userId);
+      if (resp.status === 200) {
+        setUserProfile(resp.data.profile);
+      }
+    }
+    fetchData();
+  }, [user]);
 
   return (
     <BrowserRouter>
@@ -57,6 +74,19 @@ function App({ userAuthService, userProfileService, jobPostService }) {
             ></DashboardPage>
           }
         ></Route>
+        <Route
+          path="/profile/"
+          element={
+            <ProfilePage
+              {...services}
+              user={user}
+              setUser={setUser}
+              userProfile={userProfile}
+              setUserProfile={setUserProfile}
+            ></ProfilePage>
+          }
+        ></Route>
+        <Route path="/test" element={<Doc></Doc>}></Route>
       </Routes>
     </BrowserRouter>
   );

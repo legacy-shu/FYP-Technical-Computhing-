@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function CountrySelect({setCountry}) {
+export default function CountrySelect({ setCountry, params }) {
   return (
     <Autocomplete
       id="country-select"
