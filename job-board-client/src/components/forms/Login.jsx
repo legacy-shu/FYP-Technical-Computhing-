@@ -14,6 +14,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+
 const theme = createTheme({
   palette: {
     primary: {

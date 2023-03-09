@@ -15,7 +15,7 @@ import { grey } from "@mui/material/colors";
 import Footer from "../Footer";
 import ProfileNavBar from "../ProfileNavBar";
 import { useState, useEffect } from "react";
-import AddFiles from "../forms/ImageDropzone";
+import AddFiles from "../forms/FileDropzone";
 
 const theme = createTheme({
   palette: {

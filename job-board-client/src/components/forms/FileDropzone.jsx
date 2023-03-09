@@ -7,7 +7,12 @@ const AddFiles = () => {
   const [files, setFiles] = useState([]);
   const [pdfFile, setPdfFile] = useState(undefined);
   const [rejected, setRejected] = useState([]);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  
+  //when drop files in drop zone, it't the callback
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+    //file to preview link
     if (acceptedFiles?.length) {
       setFiles((previousFiles) => [
         // ...previousFiles,
@@ -19,6 +24,7 @@ const AddFiles = () => {
     if (rejectedFiles?.length) {
       setRejected((previousFiles) => [...previousFiles, ...rejectedFiles]);
     }
+    //pdf to base64
     if (acceptedFiles?.length && acceptedFiles[0].type === "application/pdf") {
       let reader = new FileReader();
       reader.readAsDataURL(acceptedFiles[0]);
@@ -42,15 +48,14 @@ const AddFiles = () => {
   const removeRejected = (name) => {
     setRejected((files) => files.filter(({ file }) => file.name !== name));
   };
+
+  //TODO : it will be deleted
   rejected.map(({ file, errors }) => {
     console.log(file);
     errors.map((error) => {
       console.log(error.message);
     });
   });
-
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);

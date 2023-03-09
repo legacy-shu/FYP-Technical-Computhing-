@@ -5,7 +5,6 @@ import RegisterProfile from "./components/forms/RegisterProfile.jsx";
 import { useState, useEffect } from "react";
 import DashboardPage from "./components/pages/DashboardPage.jsx";
 import ProfilePage from "./components/pages/ProfilePage.jsx";
-import Doc from "./components/pages/test";
 
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
@@ -86,7 +85,6 @@ function App({ userAuthService, userProfileService, jobPostService }) {
             ></ProfilePage>
           }
         ></Route>
-        <Route path="/test" element={<Doc></Doc>}></Route>
       </Routes>
     </BrowserRouter>
   );
