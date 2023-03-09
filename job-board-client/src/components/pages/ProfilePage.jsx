@@ -256,16 +256,15 @@ export default function DashboardPage({
         </Grid>
 
         <Grid item xs={12} md={7}>
-          {/* <Box
+          <Box
             display="flex"
             justifyContent="center"
             minHeight="20vh"
             sx={{ border: 0, m: 4, boxShadow: 8, alignContent: "center" }}
             style={{ maxHeight: "100vh", overflow: "auto" }}
           >
-            <AddImage></AddImage>
-          </Box> */}
           <AddFiles></AddFiles>
+          </Box>
         </Grid>
       </Grid>
       <Footer></Footer>

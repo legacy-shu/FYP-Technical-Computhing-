@@ -1,15 +1,21 @@
-import { Paper, Stack } from "@mui/material";
-import { useCallback, useState } from "react";
+import { Box } from "@mui/material";
+import { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { Document, Page } from "react-pdf";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
 const AddFiles = () => {
   const [files, setFiles] = useState([]);
   const [pdfFile, setPdfFile] = useState(undefined);
   const [rejected, setRejected] = useState([]);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  
+  const [numPages, setNumPages] = useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
+
+  useEffect(() => {
+    pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  });
+
   //when drop files in drop zone, it't the callback
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
     //file to preview link
@@ -62,27 +68,41 @@ const AddFiles = () => {
   }
 
   return (
-    <Paper>
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p style={{ color: "red" }}>Drop the file here...</p>
-        ) : (
-          <p style={{ color: "" }}>
-            Drag 'n' Drop some file here, or click to select file
-          </p>
-        )}
-        <em>(Select File)</em>
-      </div>
+    <Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        minHeight="10vh"
+        sx={{ border: 1, m: 4, alignContent: "center" }}
+      >
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p style={{ color: "green" }}>Drop the file here...</p>
+          ) : (
+            <p
+              style={{
+                color: "#00838f",
+                paddingLeft: "40px",
+                paddingRight: "40px",
+              }}
+            >
+              Drag 'n' Drop your CV or Click to select your CV
+            </p>
+          )}
+        </div>
+      </Box>
       <div>
         <Document file={pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={pageNumber} />
+          {Array.from(new Array(numPages), (el, index) => (
+            <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+          ))}
         </Document>
         <p>
           Page {pageNumber} of {numPages}
         </p>
       </div>
-    </Paper>
+    </Box>
   );
 };
 
