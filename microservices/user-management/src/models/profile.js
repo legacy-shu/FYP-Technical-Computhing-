@@ -22,6 +22,7 @@ const profileSchema = new Schema(
       state: { type: String, required: true },
       city: { type: String, required: true },
     },
+    cv: false,
   },
   { timestamps: true }
 );

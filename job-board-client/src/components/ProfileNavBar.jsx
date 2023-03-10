@@ -14,6 +14,7 @@ import { createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
 import LogoutIcon from "@mui/icons-material/Logout";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
@@ -27,7 +28,7 @@ const theme = createTheme({
   },
 });
 
-export default function ProfileNavBar({ userAuthService, setUser }) {
+export default function ProfileNavBar({ userAuthService, setUser, user }) {
   const navigate = useNavigate();
   const handleClickLogout = () => {
     setUser(undefined);
@@ -66,7 +67,12 @@ export default function ProfileNavBar({ userAuthService, setUser }) {
                 variant="h7"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", sm: "block" },
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
               >
                 JOB FINDER
               </Typography>
@@ -77,15 +83,36 @@ export default function ProfileNavBar({ userAuthService, setUser }) {
                 sx={{ fontSize: 50, fontWeight: "bold" }}
                 color="secondary"
                 gutterBottom
-              ></Typography>
+              >
+                PROFILE
+              </Typography>
             </Box>
-            <Box>
+            <Stack direction="row" spacing={2}>
+              {user.role.provider ? (
+                <Tooltip title="Manage Job Post">
+                  <Fab
+                    sx={{ boxShadow: 0 }}
+                    size="small"
+                    color="primary"
+                    onClick={() => {
+                      navigate("/dashboard", { replace: false });
+                    }}
+                  >
+                    <DashboardIcon />
+                  </Fab>
+                </Tooltip>
+              ) : null}
               <Tooltip title="LogOut">
-                <Fab color="primary" size="small" onClick={handleClickLogout}>
+                <Fab
+                  sx={{ boxShadow: 0 }}
+                  color="primary"
+                  size="small"
+                  onClick={handleClickLogout}
+                >
                   <LogoutIcon />
                 </Fab>
               </Tooltip>
-            </Box>
+            </Stack>
           </Toolbar>
         </AppBar>
       </Box>

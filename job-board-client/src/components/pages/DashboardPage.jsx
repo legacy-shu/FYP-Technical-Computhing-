@@ -138,7 +138,7 @@ export default function DashboardPage({
         <CssBaseline />
         <Grid item xs={12} md={4}>
           <Box style={{ maxHeight: "100vh", overflow: "auto" }}>
-            {jobs.map((job) => (
+            {jobs?.map((job) => (
               <JobCard
                 clickDelete={clickDelete}
                 clickEdit={clickEdit}

@@ -11,7 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
+import { grey, cyan } from "@mui/material/colors";
 import Footer from "../Footer";
 import ProfileNavBar from "../ProfileNavBar";
 import { useState, useEffect } from "react";
@@ -21,6 +21,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: grey.A100,
+    },
+    secondary: {
+      main: cyan[900],
     },
   },
 });
@@ -43,21 +46,20 @@ export default function DashboardPage({
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const profile = {
-      profile: {
-        name: {
-          first: data.get("first-name"),
-          last: data.get("last-name"),
-        },
-        contact: {
-          countryCode: userProfile?.contact?.countryCode,
-          phoneNumber: data.get("phone-number"),
-        },
-        address: {
-          country: userProfile?.address?.country,
-          zipCode: data.get("zip-code"),
-          state: data.get("state"),
-          city: data.get("city"),
-        },
+      user: user.userId,
+      name: {
+        first: data.get("first-name"),
+        last: data.get("last-name"),
+      },
+      contact: {
+        countryCode: userProfile?.contact?.countryCode,
+        phoneNumber: data.get("phone-number"),
+      },
+      address: {
+        country: userProfile?.address?.country,
+        zipCode: data.get("zip-code"),
+        state: data.get("state"),
+        city: data.get("city"),
       },
     };
 
@@ -79,16 +81,17 @@ export default function DashboardPage({
       <ProfileNavBar
         userAuthService={userAuthService}
         setUser={setUser}
+        user={user}
       ></ProfileNavBar>
       <Grid bgcolor="primary.light" container component="main" height="100hv">
         <CssBaseline />
 
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={user?.role?.provider ? 12 : 5}>
           <Box
             display="flex"
             justifyContent="center"
             minHeight="20vh"
-            sx={{ border: 0, m: 4, boxShadow: 8, alignContent: "center" }}
+            sx={{ border: 0, m: 4, boxShadow: 2, alignContent: "center" }}
             style={{ maxHeight: "100vh", overflow: "auto" }}
           >
             {userProfile ? (
@@ -102,8 +105,8 @@ export default function DashboardPage({
                   <CardContent>
                     <Paper sx={{ mt: 5, mb: 2 }} elevation={0}>
                       <Typography
-                        m={7}
-                        sx={{ fontSize: 25, fontWeight: "bold" }}
+                        m={5}
+                        sx={{ fontSize: 27, fontWeight: "bold" }}
                         align="center"
                         color="primary.text"
                       >
@@ -255,17 +258,23 @@ export default function DashboardPage({
           </Box>
         </Grid>
 
-        <Grid item xs={12} md={7}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            minHeight="20vh"
-            sx={{ border: 0, m: 4, boxShadow: 8, alignContent: "center" }}
-            style={{ maxHeight: "100vh", overflow: "auto" }}
-          >
-          <AddFiles></AddFiles>
-          </Box>
-        </Grid>
+        {!user?.role?.provider ? (
+          <Grid item xs={12} md={7}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              minHeight="20vh"
+              sx={{ border: 0, m: 4, boxShadow: 2, alignContent: "center" }}
+              style={{ maxHeight: "100vh", overflow: "auto" }}
+            >
+              <AddFiles
+                userProfile={userProfile}
+                setUserProfile={setUserProfile}
+                userProfileService={userProfileService}
+              ></AddFiles>
+            </Box>
+          </Grid>
+        ) : null}
       </Grid>
       <Footer></Footer>
     </ThemeProvider>

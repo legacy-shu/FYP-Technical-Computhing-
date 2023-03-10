@@ -29,6 +29,7 @@ const theme = createTheme({
 export default function MainPage({
   userAuthService,
   jobPostService,
+  userProfile,
   user,
   setUser,
 }) {
@@ -125,7 +126,10 @@ export default function MainPage({
           {!isLoading ? (
             detail ? (
               <Box sx={{ border: 0, m: 4, boxShadow: 8 }}>
-                <DetailHeader detail={detail.description}></DetailHeader>
+                <DetailHeader
+                  detail={detail.description}
+                  userProfile={userProfile}
+                ></DetailHeader>
                 <Box style={{ maxHeight: "70vh", overflow: "auto" }}>
                   <DetailList detail={detail.description}></DetailList>
                   <DetailMain detail={detail.description}></DetailMain>

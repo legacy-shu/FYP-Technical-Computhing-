@@ -35,7 +35,7 @@ export default class UserProfileService {
       process.env.REACT_APP_API_PATH_USER + `/${userId}`,
       {
         method: "PUT",
-        data: { profile: body.profile },
+        data: { profile: body },
         headers: { Authorization: `Bearer ${token}` },
       }
     );

@@ -32,7 +32,7 @@ export default function JobCard({
 }) {
   const description = job?.description || {};
   const { company, title, address, salary, posted } = description;
-  const location = `${address?.city},${address?.country}`;
+  const location = `${address?.city}, ${address?.country}`;
   const clickedCard = () => {
     onClick(id);
   };

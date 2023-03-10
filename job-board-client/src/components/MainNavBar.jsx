@@ -15,7 +15,7 @@ import { styled, alpha, createTheme } from "@mui/material/styles";
 import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
 import SearchIcon from "@mui/icons-material/Search";
-import Face6Icon from "@mui/icons-material/Face6";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
@@ -72,15 +72,15 @@ export default function MainNavBar({
 }) {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
-  
+
   const handleChage = (event) => {
     setValue(event.target.value);
   };
-  
+
   const handleViewProfile = () => {
     navigate("/profile", { replace: true });
   };
-  
+
   const handleLoginOut = () => {
     if (user) {
       setUser(undefined);
@@ -121,7 +121,12 @@ export default function MainNavBar({
                 variant="h7"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", sm: "block" },
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
               >
                 JOB FINDER
               </Typography>
@@ -147,6 +152,7 @@ export default function MainNavBar({
               {user?.role?.provider ? (
                 <Tooltip title="Manage Job Post">
                   <Fab
+                    sx={{ boxShadow: 0 }}
                     size="small"
                     color="primary"
                     onClick={() => {
@@ -161,15 +167,17 @@ export default function MainNavBar({
                 <Stack direction="row" spacing={2}>
                   <Tooltip title="Profile">
                     <Fab
+                      sx={{ boxShadow: 0 }}
                       color="primary"
                       size="small"
                       onClick={handleViewProfile}
                     >
-                      <Face6Icon />
+                      <PermIdentityIcon />
                     </Fab>
                   </Tooltip>
                   <Tooltip title="LogOut">
                     <Fab
+                      sx={{ boxShadow: 0 }}
                       color="primary"
                       size="small"
                       onClick={handleLoginOut}
@@ -181,6 +189,7 @@ export default function MainNavBar({
               ) : (
                 <Tooltip title="LogIn">
                   <Fab
+                    sx={{ boxShadow: 0 }}
                     variant="extended"
                     color="primary"
                     size="medium"

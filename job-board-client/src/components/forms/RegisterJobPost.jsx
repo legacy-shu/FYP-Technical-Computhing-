@@ -88,7 +88,7 @@ export default function RegisterJobPost({
   };
 
   useEffect(() => {
-    if (user.userId) {
+    if (user?.userId) {
       getUserInfo(user.userId);
     }
   }, []);

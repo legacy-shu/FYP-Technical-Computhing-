@@ -14,7 +14,6 @@ function App({ userAuthService, userProfileService, jobPostService }) {
   };
   const [user, setUser] = useState(undefined);
   const [userProfile, setUserProfile] = useState(undefined);
-
   useEffect(() => {
     async function fetchData() {
       const resp = await userAuthService.check();
@@ -48,7 +47,12 @@ function App({ userAuthService, userProfileService, jobPostService }) {
         <Route
           path="/"
           element={
-            <MainPage {...services} user={user} setUser={setUser}></MainPage>
+            <MainPage
+              {...services}
+              user={user}
+              setUser={setUser}
+              userProfile={userProfile}
+            ></MainPage>
           }
         ></Route>
         <Route

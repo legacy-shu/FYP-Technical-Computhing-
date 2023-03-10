@@ -15,8 +15,8 @@ import { blueGrey } from "@mui/material/colors";
 import LooksIcon from "@mui/icons-material/Looks";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Face6Icon from "@mui/icons-material/Face6";
+import AddIcon from "@mui/icons-material/Add";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
@@ -83,7 +83,12 @@ export default function DashboardNavBar({
                 variant="h7"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", sm: "block" },
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
               >
                 JOB FINDER
               </Typography>
@@ -101,35 +106,37 @@ export default function DashboardNavBar({
             <Stack direction="row" alignItems="center" spacing={2}>
               <Tooltip title="View Profile">
                 <Fab
+                  sx={{ boxShadow: 0 }}
                   size="small"
                   color="primary"
                   onClick={handleViewProfile}
                 >
-                  <Face6Icon />
+                  <PermIdentityIcon />
                 </Fab>
               </Tooltip>
-              {postMode ? (
-                <Tooltip title="Edit a Job Post">
-                  <Fab
-                    size="small"
-                    color="primary"
-                    onClick={handlerClickedEdit}
-                  >
-                    <AppRegistrationIcon />
-                  </Fab>
-                </Tooltip>
-              ) : null}
+              <Tooltip title="Edit a Job Post">
+                <Fab
+                  sx={{ boxShadow: 0 }}
+                  size="small"
+                  color="primary"
+                  onClick={handlerClickedEdit}
+                >
+                  <AppRegistrationIcon />
+                </Fab>
+              </Tooltip>
               <Tooltip title="Create New a Job Post">
                 <Fab
+                  sx={{ boxShadow: 0 }}
                   size="small"
                   color="primary"
                   onClick={handlerClickedPost}
                 >
-                  <AddCircleOutlineIcon />
+                  <AddIcon />
                 </Fab>
               </Tooltip>
               <Tooltip title="LogOut">
                 <Fab
+                  sx={{ boxShadow: 0 }}
                   color="primary"
                   size="small"
                   onClick={handleClickLogout}
