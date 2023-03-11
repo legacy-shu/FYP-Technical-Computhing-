@@ -36,6 +36,14 @@ export const ROUTES = [
     },
   },
   {
+    url: "/jobs/:jobId/apply",
+    auth: true,
+    proxy: {
+      target: `${config.base.url}:${config.job_service.port}`,
+      changeOrigin: true,
+    },
+  },
+  {
     url: "/users/signup",
     auth: false,
     proxy: {

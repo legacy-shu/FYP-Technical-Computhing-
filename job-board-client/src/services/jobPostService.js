@@ -13,8 +13,17 @@ export default class JobPostService {
     return resp;
   }
 
-  async applyJob() {
-    //TODO: implement later
+  async applyJob(jobId, applicant) {
+    const token = this.tokenStorage.getToken();
+    const resp = await this.httpClient.requestAPI(
+      process.env.REACT_APP_API_PATH_JOB + `/${jobId}/apply`,
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        data:  applicant ,
+      }
+    );
+    return resp;
   }
 
   async searchJobPosts(keyword) {
@@ -42,7 +51,6 @@ export default class JobPostService {
   }
 
   async registerJobPost(description) {
-    console.log(description);
     const token = this.tokenStorage.getToken();
     const resp = await this.httpClient.requestAPI(
       process.env.REACT_APP_API_PATH_JOB,

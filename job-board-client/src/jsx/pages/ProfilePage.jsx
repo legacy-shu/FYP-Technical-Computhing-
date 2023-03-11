@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { grey, cyan } from "@mui/material/colors";
-import Footer from "../Footer";
-import ProfileNavBar from "../ProfileNavBar";
+import Footer from "../components/Footer";
+import ProfileNavBar from "../components/ProfileNavBar";
 import { useState, useEffect } from "react";
 import AddFiles from "../forms/FileDropzone";
 

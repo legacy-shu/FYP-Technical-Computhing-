@@ -28,10 +28,10 @@ export default function AlertDialog({ confirm, setConfirm, deletePost }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="secondary" onClick={handleClose}>
+          <Button color="success" onClick={handleClose}>
             Cancel
           </Button>
-          <Button color="secondary" onClick={handleDelete} autoFocus>
+          <Button color="success" onClick={handleDelete} autoFocus>
             Delete
           </Button>
         </DialogActions>

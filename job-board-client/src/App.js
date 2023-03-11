@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./components/pages/MainPage.jsx";
-import Login from "./components/forms/Login.jsx";
-import RegisterProfile from "./components/forms/RegisterProfile.jsx";
+import MainPage from "./jsx/pages/MainPage";
+import Login from "./jsx/forms/Login";
+import RegisterProfile from "./jsx/forms/RegisterProfile";
 import { useState, useEffect } from "react";
-import DashboardPage from "./components/pages/DashboardPage.jsx";
-import ProfilePage from "./components/pages/ProfilePage.jsx";
+import DashboardPage from "./jsx/pages/DashboardPage";
+import ProfilePage from "./jsx/pages/ProfilePage";
+import { storage } from "../src/utils/firebase";
+import { ref, getDownloadURL } from "firebase/storage";
 
 function App({ userAuthService, userProfileService, jobPostService }) {
   const services = {
@@ -12,8 +14,17 @@ function App({ userAuthService, userProfileService, jobPostService }) {
     userProfileService,
     jobPostService,
   };
+  const getCVFromStorage = async () => {
+    if (userProfile?.cv) {
+      const storageRef = ref(storage, `CVs/${userProfile.user.id}`);
+      const cv = await getDownloadURL(storageRef);
+      setCV(cv);
+    }
+  };
   const [user, setUser] = useState(undefined);
   const [userProfile, setUserProfile] = useState(undefined);
+  const [cv, setCV] = useState(undefined);
+
   useEffect(() => {
     async function fetchData() {
       const resp = await userAuthService.check();
@@ -40,7 +51,9 @@ function App({ userAuthService, userProfileService, jobPostService }) {
     }
     fetchData();
   }, [user]);
-
+  useEffect(() => {
+    getCVFromStorage();
+  }, [userProfile]);
   return (
     <BrowserRouter>
       <Routes>
@@ -52,6 +65,7 @@ function App({ userAuthService, userProfileService, jobPostService }) {
               user={user}
               setUser={setUser}
               userProfile={userProfile}
+              cv={cv}
             ></MainPage>
           }
         ></Route>

@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Button,
   Dialog,
@@ -7,29 +6,25 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import { useState, useEffect } from "react";
 
-export default function ApplyDialog({ dialogInfo, setDialogInfo }) {
+export default function ApplyDialog({ dialogInfo }) {
+  const [open, setOpen] = useState(dialogInfo.open);
   const handleLeft = () => {
-    let info = {
-      ...dialogInfo,
-      open: false,
-    };
     dialogInfo?.handleLeft();
-    setDialogInfo(info);
+    setOpen(false);
   };
-
   const handleRight = () => {
-    let info = {
-      ...dialogInfo,
-      open: false,
-    };
     dialogInfo?.handleRight();
-    setDialogInfo(info);
+    setOpen(false);
   };
+  useEffect(() => {
+    setOpen(dialogInfo.open);
+  }, [dialogInfo]);
   return (
     <div>
       <Dialog
-        open={dialogInfo?.open}
+        open={open}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -40,12 +35,17 @@ export default function ApplyDialog({ dialogInfo, setDialogInfo }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleLeft}>
-            {dialogInfo?.close}
-          </Button>
-          <Button variant="outlined" onClick={handleRight} autoFocus>
-            {dialogInfo?.yes}
-          </Button>
+          {dialogInfo?.close ? (
+            <Button variant="outlined" onClick={handleLeft}>
+              {dialogInfo?.close}
+            </Button>
+          ) : null}
+
+          {dialogInfo?.yes ? (
+            <Button variant="outlined" onClick={handleRight} autoFocus>
+              {dialogInfo?.yes}
+            </Button>
+          ) : null}
         </DialogActions>
       </Dialog>
     </div>

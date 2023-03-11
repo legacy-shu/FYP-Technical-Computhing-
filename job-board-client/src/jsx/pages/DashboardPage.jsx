@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { CssBaseline, Box, Grid, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-import JobCard from "../JobCard";
-import Progress from "../Progress";
-import DashboardNavBar from "../DashboardNavBar";
+import JobCard from "../components/JobCard";
+import Progress from "../components/Progress";
+import DashboardNavBar from "../components/DashboardNavBar"
 import EditJobPost from "../forms/EditPostForm";
 import RegisterJobPost from "../forms/RegisterJobPost";
-import AlertDialog from "../AlertDialog";
-import Footer from "../Footer";
+import AlertDialog from "../components/AlertDialog";
+import Footer from "../components/Footer";
 
 const theme = createTheme({
   palette: {

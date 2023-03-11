@@ -39,7 +39,6 @@ const AddFiles = ({ userProfile, setUserProfile, userProfileService }) => {
       if (snapshot.metadata) {
         userProfile.cv = true;
         updateUserProfile(userProfile.user.id, userProfile);
-        console.log("Uploaded a data_url string!");
       }
     }
   };

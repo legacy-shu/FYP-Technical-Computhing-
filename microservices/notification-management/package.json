@@ -1,7 +1,7 @@
 {
-  "name": "job-management",
+  "name": "notification-management",
   "version": "1.0.0",
-  "description": "Job listing management service for the purpose of making it easy for job seekers to find job listings and easy for employers to post their job openings, as an independent service",
+  "description": "Email notification server for sending email to job provider and job seeker when job seeker applied for a job",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -17,8 +17,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "express-validator": "^6.15.0",
-    "mongoose": "^6.10.0"
+    "jsdom": "^21.1.0",
+    "nodemailer": "^6.9.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

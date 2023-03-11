@@ -7,7 +7,7 @@ router.post("/seedonly", jobPostController.seedonly);
 router.get("/seedonly/drop", jobPostController.seedonlyDorpCollection);
 
 router.post("/", validateJobPosting, jobPostController.registerJobPost);
-router.post("/:jobId", jobPostController.applyJob);
+router.post("/:jobId/apply", jobPostController.applyJob);
 
 router.get("/", jobPostController.getAllJobs);
 router.get("/search", jobPostController.searchJobPosts);

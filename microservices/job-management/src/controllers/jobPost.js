@@ -1,5 +1,17 @@
 import JobPost from "../models/jobPost.js";
+import amqp from "amqplib";
 
+async function sendMessage(data) {
+  try {
+    const connection = await amqp.connect("amqp://localhost:5672");
+    const channel = await connection.createChannel();
+    const result = await channel.assertQueue("applyjob");
+    channel.sendToQueue("applyjob", Buffer.from(JSON.stringify(data)));
+    console.log("applyjob sent to message queue");
+  } catch (ex) {
+    console.log(ex);
+  }
+}
 export async function seedonlyDorpCollection(req, res) {
   try {
     await JobPost.deleteMany({});
@@ -33,7 +45,41 @@ export async function registerJobPost(req, res) {
 }
 
 export async function applyJob(req, res) {
-  res.status(200).json({ message: "Job Management Service" });
+  try {
+    const jobId = req.params.jobId;
+    const applicantId = req.body.user.id;
+    const find = await JobPost.findById({ _id: jobId }).find({
+      "description.applicants": applicantId,
+    });
+
+    if (find.length > 0) {
+      return res.status(303).json({ message: "exist applicant" });
+    }
+
+    const addApplicant = await JobPost.findByIdAndUpdate(
+      { _id: jobId },
+      { $push: { "description.applicants": applicantId } },
+      {
+        new: true,
+      }
+    );
+    const data = {
+      applicantId,
+      cv:req.body.cvlink,
+      applicantEmail: req.body.user.email,
+      companyEmail: addApplicant.description.address.email,
+      jobTitle: addApplicant.description.title,
+      company: addApplicant.description.company,
+      salary: addApplicant.description.salary,
+      jobType: addApplicant.description.jobType,
+      location: `${addApplicant.description.address.city}, ${addApplicant.description.address.country}`,
+    };
+    await sendMessage(data);
+    res.status(200).json({ addApplicant });
+  } catch (error) {
+    console.log(err);
+    res.status(500).json({ err: err.message });
+  }
 }
 
 export async function getAllJobs(req, res) {

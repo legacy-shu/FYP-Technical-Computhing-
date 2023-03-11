@@ -7,14 +7,14 @@ import {
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-import DetailMain from "../DetailMain";
-import JobCard from "../JobCard";
-import DetailHeader from "../DetailHeader";
-import DetailList from "../DetailList";
-import MainNavBar from "../MainNavBar";
-import EmptyPage from "./EmptyPage";
-import Footer from "../Footer";
-import Progress from "../Progress";
+import DetailMain from "../components/DetailMain";
+import JobCard from "../components/JobCard";
+import DetailHeader from "../components/DetailHeader";
+import DetailList from "../components/DetailList";
+import MainNavBar from "../components/MainNavBar";
+import EmptyPage from "../pages/EmptyPage";
+import Footer from "../components/Footer";
+import Progress from "../components/Progress";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -32,6 +32,7 @@ export default function MainPage({
   userProfile,
   user,
   setUser,
+  cv,
 }) {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
@@ -127,8 +128,11 @@ export default function MainPage({
             detail ? (
               <Box sx={{ border: 0, m: 4, boxShadow: 8 }}>
                 <DetailHeader
-                  detail={detail.description}
+                  description={detail}
                   userProfile={userProfile}
+                  jobPostService={jobPostService}
+                  setDetail={setDetail}
+                  cv={cv}
                 ></DetailHeader>
                 <Box style={{ maxHeight: "70vh", overflow: "auto" }}>
                   <DetailList detail={detail.description}></DetailList>
