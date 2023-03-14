@@ -42,5 +42,23 @@ ls'''
       }
     }
 
+    stage('Create Network') {
+      parallel {
+        stage('Create Network') {
+          steps {
+            sh '''sudo docker network create job-board-network
+'''
+          }
+        }
+
+        stage('Build RabbitMQ Docker') {
+          steps {
+            sh 'sudo docker run -d --network job-board-network --hostname rabbitmq --name rabbitmq -p 15672:15672 -p 5672:5672 rabbitmq:3-management'
+          }
+        }
+
+      }
+    }
+
   }
 }
