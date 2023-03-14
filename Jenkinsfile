@@ -35,12 +35,5 @@ sudo cat ./microservices/api-gateway/.env'''
       }
     }
 
-    stage('Test') {
-      steps {
-        sh '''pwd
-ls'''
-      }
-    }
-
   }
 }
