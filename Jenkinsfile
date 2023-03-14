@@ -15,20 +15,20 @@ pipeline {
 
 ls -al
 
-mv ~/env/client/.env ./job-board-client/.env
-cat ./job-board-client/.env
+sudo mv ~/env/client/.env ./job-board-client/.env
+sudo cat ./job-board-client/.env
 
-mv ~/env/microservice/job/.env ./microservice/job-management/.env
-cat ./microservice/job-management/.env
+sudo mv ~/env/microservice/job/.env ./microservice/job-management/.env
+sudo cat ./microservice/job-management/.env
 
-mv ~/env/microservice/user/.env ./microservice/user-management/.env
-cat ./microservice/user-management/.env
+sudo mv ~/env/microservice/user/.env ./microservice/user-management/.env
+sudo cat ./microservice/user-management/.env
 
-mv ~/env/microservice/notification/.env ./microservice/notification-management/.env
-cat ./microservice/notification-management/.env
+sudo mv ~/env/microservice/notification/.env ./microservice/notification-management/.env
+sudo cat ./microservice/notification-management/.env
 
-mv ~/env/microservice/api-gateway/.env ./microservice/api-gateway/.env
-cat ./microservice/api-gateway/.env'''
+sudo mv ~/env/microservice/api-gateway/.env ./microservice/api-gateway/.env
+sudo cat ./microservice/api-gateway/.env'''
           }
         }
 
