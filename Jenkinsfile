@@ -32,7 +32,7 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Build') {
       steps {
-        sh 'ls -al'
+        sh 'docker-compose build'
       }
     }
 
