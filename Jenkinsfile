@@ -13,8 +13,8 @@ pipeline {
 
 ls -al
 
-sudo cp /var/jenkins_home/workspace/env/client/.env ./job-board-client/.env
-sudo cat ./job-board-client/.env
+cp /var/jenkins_home/workspace/env/client/.env ./job-board-client/.env
+cat ./job-board-client/.env
 
 sudo cp /var/jenkins_home/workspace/env/microservice/job/.env ./microservices/job-management/.env
 sudo cat ./microservices/job-management/.env
