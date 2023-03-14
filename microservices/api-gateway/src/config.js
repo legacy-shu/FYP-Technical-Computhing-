@@ -15,6 +15,8 @@ export const config = {
   },
   base: {
     url: required("HOST_URL", "http://localhost"),
+    job_service: required("JOB_MANAGEMENTE_HOST", "http://localhost"),
+    user_service: required("USER_MANAGEMENT_HOST", "http://localhost")
   },
   host: {
     port: parseInt(required("HOST_PORT", 8000)),

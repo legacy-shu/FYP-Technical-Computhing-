@@ -1,0 +1,86 @@
+version: "3.8"
+services:
+  user-db:
+    image: library/mongo:latest
+    ports:
+      - 27017:27017
+    restart: always
+    networks:
+      - job-board-network
+  job-db:
+    image: library/mongo:latest
+    command: mongod --port 27018
+    ports:
+      - 27018:27018
+    restart: always
+    networks:
+      - job-board-network
+  # rabbitmq:
+  #   image: rabbitmq:3-management-alpine
+  #   hostname: rabbitmq
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672
+  #   restart: always
+  #   volumes:
+  #     - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+  client:
+    build: ./job-board-client
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api-gateway
+      - user-service
+      - job-service
+      - notification-service
+    environment:
+      - REACT_APP_API_BASE=http://localhost:8000
+    networks:
+      - job-board-network
+  api-gateway:
+    hostname: api-gateway
+    build: ./microservices/api-gateway
+    ports:
+      - 8000:8000
+    environment:
+      - JOB_MANAGEMENTE_HOST=http://job-service
+      - USER_MANAGEMENT_HOST=http://user-service
+    networks:
+      - job-board-network
+  notification-service:
+    build: ./microservices/notification-management
+    ports:
+      - 8003:8003
+    environment:
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    restart: always
+    networks:
+      - job-board-network
+  job-service:
+    build: ./microservices/job-management
+    ports:
+      - 8002:8002
+    environment:
+      - DB_HOST=mongodb://job-db:27018/job-management
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+    depends_on:
+      - job-db
+    networks:
+      - job-board-network
+  user-service:
+    build: ./microservices/user-management
+    ports:
+      - 8001:8001
+    environment:
+      - DB_HOST=mongodb://user-db:27017/user-management
+      - SEED_URL=http://job-service:8002
+    depends_on:
+      - user-db
+      - job-service
+    networks:
+      - job-board-network
+networks:
+  job-board-network:
+    external: true

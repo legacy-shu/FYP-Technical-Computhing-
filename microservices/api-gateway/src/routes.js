@@ -4,7 +4,7 @@ export const ROUTES = [
     url: "/jobs/all",
     auth: false,
     proxy: {
-      target: `${config.base.url}:${config.job_service.port}`,
+      target: `${config.base.job_service}:${config.job_service.port}`,
       changeOrigin: true,
       pathRewrite: {
         "/all": "",
@@ -15,7 +15,7 @@ export const ROUTES = [
     url: "/jobs",
     auth: true,
     proxy: {
-      target: `${config.base.url}:${config.job_service.port}`,
+      target: `${config.base.job_service}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
@@ -23,7 +23,7 @@ export const ROUTES = [
     url: "/jobs/search",
     auth: false,
     proxy: {
-      target: `${config.base.url}:${config.job_service.port}`,
+      target: `${config.base.job_service}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
@@ -31,7 +31,7 @@ export const ROUTES = [
     url: "/jobs/:userId/posted",
     auth: true,
     proxy: {
-      target: `${config.base.url}:${config.job_service.port}`,
+      target: `${config.base.job_service}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
@@ -39,7 +39,7 @@ export const ROUTES = [
     url: "/jobs/:jobId/apply",
     auth: true,
     proxy: {
-      target: `${config.base.url}:${config.job_service.port}`,
+      target: `${config.base.job_service}:${config.job_service.port}`,
       changeOrigin: true,
     },
   },
@@ -47,7 +47,7 @@ export const ROUTES = [
     url: "/users/signup",
     auth: false,
     proxy: {
-      target: `${config.base.url}:${config.user_service.port}`,
+      target: `${config.base.user_service}:${config.user_service.port}`,
       changeOrigin: true,
       pathRewrite: {
         "/signup": "",
@@ -58,7 +58,7 @@ export const ROUTES = [
     url: "/users",
     auth: true,
     proxy: {
-      target: `${config.base.url}:${config.user_service.port}`,
+      target: `${config.base.user_service}:${config.user_service.port}`,
       changeOrigin: true,
     },
   },
@@ -66,7 +66,7 @@ export const ROUTES = [
     url: "/auth/login",
     auth: false,
     proxy: {
-      target: `${config.base.url}:${config.user_service.port}`,
+      target: `${config.base.user_service}:${config.user_service.port}`,
       changeOrigin: true,
     },
   },

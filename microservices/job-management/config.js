@@ -16,4 +16,5 @@ export const config = {
   db: {
     host: required("DB_HOST"),
   },
+  rabbitmq: required("RABBITMQ_URL"),
 };

@@ -1,11 +1,11 @@
 import JobPost from "../models/jobPost.js";
 import amqp from "amqplib";
-
+import { config } from "../../config.js";
 async function sendMessage(data) {
   try {
-    const connection = await amqp.connect("amqp://localhost:5672");
+    const connection = await amqp.connect(config.rabbitmq);
     const channel = await connection.createChannel();
-    const result = await channel.assertQueue("applyjob");
+    await channel.assertQueue("applyjob");
     channel.sendToQueue("applyjob", Buffer.from(JSON.stringify(data)));
     console.log("applyjob sent to message queue");
   } catch (ex) {
@@ -65,7 +65,7 @@ export async function applyJob(req, res) {
     );
     const data = {
       applicantId,
-      cv:req.body.cvlink,
+      cv: req.body.cvlink,
       applicantEmail: req.body.user.email,
       companyEmail: addApplicant.description.address.email,
       jobTitle: addApplicant.description.title,

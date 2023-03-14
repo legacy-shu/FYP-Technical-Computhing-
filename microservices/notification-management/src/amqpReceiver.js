@@ -32,7 +32,7 @@ function createJobSeekerMessage(data) {
 
   return {
     from: "JobFinder-Notification@jobfinder.com",
-    to: `c2c5bab22e-adff9d+${data.applicantEmail}@inbox.mailtrap.io`,
+    to: `2d8ee7c3f3-1594a1+${data.applicantEmail}@inbox.mailtrap.io`,
     subject: `You're Moving Forware: Your CV is Submitted`,
     html: dom.serialize(),
   };
@@ -44,7 +44,7 @@ function createJobProviderMessage(data) {
   cvlink.href = data.cv;
   return {
     from: "JobFinder-Notification@jobfinder.com",
-    to: `c2c5bab22e-adff9d+${data.companyEmail}@inbox.mailtrap.io`,
+    to: `2d8ee7c3f3-1594a1+${data.companyEmail}@inbox.mailtrap.io`,
     subject: `A Perfect Fit for Your Open Position Has Been Found`,
     html: dom.serialize(),
   };
