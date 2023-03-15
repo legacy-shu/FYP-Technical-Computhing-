@@ -59,5 +59,12 @@ sudo docker images'''
       }
     }
 
+    stage('Docker compose up') {
+      steps {
+        sh '''sudo docker compose down
+sudo docker compose up -d'''
+      }
+    }
+
   }
 }
