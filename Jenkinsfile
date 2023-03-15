@@ -61,8 +61,8 @@ sudo docker images'''
 
     stage('Docker compose up') {
       steps {
-        sh '''sudo docker compose down
-sudo docker compose up -d'''
+        sh '''sudo docker system prune -a --volumes -y
+'''
       }
     }
 
