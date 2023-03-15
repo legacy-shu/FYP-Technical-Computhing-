@@ -37,5 +37,15 @@ sudo docker images'''
       }
     }
 
+    stage('Log into docker hub') {
+      environment {
+        USER = 'lundaljung'
+        PASS = 'dockerhub'
+      }
+      steps {
+        sh 'sudo docker login -u $USER -p $PASS'
+      }
+    }
+
   }
 }
