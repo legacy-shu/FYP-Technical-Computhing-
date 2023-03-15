@@ -53,5 +53,11 @@ sudo docker images'''
       }
     }
 
+    stage('Pull from dockerhub') {
+      steps {
+        sh 'sudo docker dompose pull'
+      }
+    }
+
   }
 }
