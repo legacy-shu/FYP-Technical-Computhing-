@@ -11,6 +11,7 @@ export default async function amqpReceiver() {
     connection = await amqp.connect(config.rabbitmq.url);
     channel = await connection.createChannel();
     await channel.assertQueue("applyjob");
+    console.log("rabbitmq connected");
     channel.consume("applyjob", (data) => {
       const message = JSON.parse(data.content);
       const sendMessageToJobSeeker = createJobSeekerMessage(message);
@@ -20,6 +21,8 @@ export default async function amqpReceiver() {
       channel.ack(data);
     });
   } catch (ex) {
+    amqpReceiver();
+    console.log("connection ...");
     console.log(ex);
   }
 }
