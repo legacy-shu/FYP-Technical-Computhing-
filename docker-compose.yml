@@ -42,7 +42,7 @@ services:
       - rabbitmq
 
   frontend:
-    platform: linux/amd64
+    # platform: linux/amd64
     build: ./job-board-client
     image: lundaljung/frontend:latest
     ports:
@@ -58,10 +58,10 @@ services:
       - frontend
     restart: always
     environment:
-      - REACT_APP_API_BASE=http://localhost:8000
+      - REACT_APP_API_BASE=http://13.53.245.148/:8000
 
   api-gateway:
-    platform: linux/amd64
+    # platform: linux/amd64
     build: ./microservices/api-gateway
     image: lundaljung/api-gateway:latest
     ports:
@@ -75,7 +75,7 @@ services:
     restart: always
 
   notification-service:
-    platform: linux/amd64
+    # platform: linux/amd64
     build: ./microservices/notification-management
     image: lundaljung/notification-service:latest
     ports:
@@ -88,7 +88,7 @@ services:
       - backend
 
   job-service:
-    platform: linux/amd64
+    # platform: linux/amd64
     build: ./microservices/job-management
     image: lundaljung/job-service:latest
     ports:
@@ -105,7 +105,7 @@ services:
       - jobdb
 
   user-service:
-    platform: linux/amd64
+    # platform: linux/amd64
     build: ./microservices/user-management
     image: lundaljung/user-service:latest
     ports:
