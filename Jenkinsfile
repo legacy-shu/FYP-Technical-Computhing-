@@ -13,19 +13,19 @@ pipeline {
 
 ls -al
 
-cp /var/jenkins_home/workspace/env/client/.env ./job-board-client/.env
+cp /var/lib/jenkins/workspace/env/client/.env ./job-board-client/.env
 cat ./job-board-client/.env
 
-cp /var/jenkins_home/workspace/env/microservices/job/.env ./microservices/job-management/.env
+cp /var/lib/jenkins/workspace/env/microservices/job/.env ./microservices/job-management/.env
 cat ./microservices/job-management/.env
 
-cp /var/jenkins_home/workspace/env/microservices/user/.env ./microservices/user-management/.env
+cp /var/lib/jenkins/workspace/env/microservices/user/.env ./microservices/user-management/.env
 cat ./microservices/user-management/.env
 
-cp /var/jenkins_home/workspace/env/microservices/notification/.env ./microservices/notification-management/.env
+cp /var/lib/jenkins/workspace/env/microservices/notification/.env ./microservices/notification-management/.env
 cat ./microservices/notification-management/.env
 
-cp /var/jenkins_home/workspace/env/microservices/api-gateway/.env ./microservices/api-gateway/.env
+cp /var/lib/jenkins/workspace/env/microservices/api-gateway/.env ./microservices/api-gateway/.env
 cat ./microservices/api-gateway/.env'''
       }
     }
