@@ -39,11 +39,11 @@ sudo docker images'''
 
     stage('Log into docker hub') {
       environment {
-        USER = 'lundaljung'
-        PASS = 'dockerhub'
+        DOCKER_USER = 'lundaljung'
+        DOCKER_PASS = 'dockerhub'
       }
       steps {
-        sh 'sudo docker login -u $USER -p $PASS'
+        sh 'sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}'
       }
     }
 
