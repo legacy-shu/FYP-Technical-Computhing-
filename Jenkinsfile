@@ -32,7 +32,8 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Build') {
       steps {
-        sh 'sudo docker compose build'
+        sh '''sudo docker compose build
+sudo docker images'''
       }
     }
 
