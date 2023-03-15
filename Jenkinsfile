@@ -47,5 +47,11 @@ sudo docker images'''
       }
     }
 
+    stage('Push to docker hub') {
+      steps {
+        sh 'sudo docker compose push'
+      }
+    }
+
   }
 }
