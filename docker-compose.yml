@@ -58,7 +58,7 @@ services:
       - frontend
     restart: always
     environment:
-      - REACT_APP_API_BASE=http://13.53.245.148:8000
+      - REACT_APP_API_BASE=http://16.170.216.230/:8000
 
   api-gateway:
     # platform: linux/amd64
