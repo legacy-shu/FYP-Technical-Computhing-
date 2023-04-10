@@ -41,8 +41,8 @@ ls -al'''
 
     stage('Build') {
       steps {
-        sh '''sudo docker compose build
-sudo docker images'''
+        sh '''docker compose build
+docker images'''
       }
     }
 
