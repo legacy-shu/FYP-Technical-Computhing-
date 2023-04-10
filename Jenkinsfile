@@ -36,6 +36,8 @@ cat ./microservices/api-gateway/.env'''
 pwd
 cd job-management
 export PATH=/home/ubuntu/.nvm/versions/node/18.15.0/bin:$PATH
+sudo chmod +x /home/ubuntu/.nvm/versions/node/v18.15.0/bin/node
+sudo chown jenkins:jenkins /home/ubuntu/.nvm/versions/node/v18.15.0/bin/node
 node -v
 npm i && npm test'''
       }
