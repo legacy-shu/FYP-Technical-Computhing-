@@ -35,7 +35,7 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 pwd
 cd job-management
-pwd'''
+ls -al'''
       }
     }
 
