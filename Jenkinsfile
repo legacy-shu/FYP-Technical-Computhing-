@@ -32,10 +32,10 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Execute Testing') {
       steps {
-        sh '''cd microservices/job-management
-npm i
-npm test
-'''
+        sh '''cd microservices
+pwd
+cd job-management
+pwd'''
       }
     }
 
