@@ -30,6 +30,13 @@ cat ./microservices/api-gateway/.env'''
       }
     }
 
+    stage('Execute Testing') {
+      steps {
+        sh '''npm test
+'''
+      }
+    }
+
     stage('Build') {
       steps {
         sh '''sudo docker compose build
@@ -39,27 +46,30 @@ sudo docker images'''
 
     stage('Log into docker hub') {
       steps {
-        sh 'sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}'
+        sh '''sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+'''
       }
     }
 
     stage('Push to docker hub') {
       steps {
-        sh 'sudo docker compose push'
+        sh '''sudo docker compose push
+'''
       }
     }
 
-    stage('Pull from dockerhub') {
+    stage('Pull from docker hub') {
       steps {
-        sh 'sudo docker compose pull'
+        sh '''sudo docker compose pull
+
+'''
       }
     }
 
     stage('Docker compose up') {
       steps {
         sh '''sudo docker compose down
-sudo docker compose up -d
-'''
+sudo docker compose up -d'''
       }
     }
 
