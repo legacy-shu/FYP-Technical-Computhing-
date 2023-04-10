@@ -4,11 +4,12 @@ import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import JobCard from "../components/JobCard";
 import Progress from "../components/Progress";
-import DashboardNavBar from "../components/DashboardNavBar"
+import DashboardNavBar from "../components/DashboardNavBar";
 import EditJobPost from "../forms/EditPostForm";
 import RegisterJobPost from "../forms/RegisterJobPost";
 import AlertDialog from "../components/AlertDialog";
 import Footer from "../components/Footer";
+import ApplicantsList from "../components/ApplicantsList";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,8 @@ export default function DashboardPage({
   const [isLoading, setIsLoading] = useState(false);
   const [confirm, setConfirm] = useState({ open: false });
   const [postMode, setPostMode] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [applicants, setApplicants] = useState(jobs?.description?.applicants);
 
   const clickEdit = (id) => {
     getJobDetail(id);
@@ -40,6 +43,12 @@ export default function DashboardPage({
     setConfirm({ id: id, open: true, delete: false });
     setPostMode(false);
   };
+
+  const clickApplicants = (ids) => {
+    setApplicants(ids);
+    setOpen(true);
+  };
+
   const submitUpdateJobpost = async (id, description) => {
     setIsLoading(true);
     const resp = await jobPostService.updateJobPost(id, description);
@@ -121,6 +130,12 @@ export default function DashboardPage({
   }, [user]);
   return (
     <ThemeProvider theme={theme}>
+      <ApplicantsList
+        open={open}
+        setOpen={setOpen}
+        applicants={applicants}
+        userProfileService={userProfileService}
+      ></ApplicantsList>
       <AlertDialog
         confirm={confirm}
         setConfirm={setConfirm}
@@ -142,6 +157,7 @@ export default function DashboardPage({
               <JobCard
                 clickDelete={clickDelete}
                 clickEdit={clickEdit}
+                clickApplicants={clickApplicants}
                 provider={user?.role?.provider}
                 job={job}
                 key={job.id}

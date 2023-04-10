@@ -67,7 +67,7 @@ export async function applyJob(req, res) {
       applicantId,
       cv: req.body.cvlink,
       applicantEmail: req.body.user.email,
-      companyEmail: addApplicant.description.address.email,
+      companyEmail: addApplicant.description.email,
       jobTitle: addApplicant.description.title,
       company: addApplicant.description.company,
       salary: addApplicant.description.salary,

@@ -1,26 +1,18 @@
 import express from "express";
-import jobs from "./routes/jobPost.js";
-import { config } from "../config.js";
-import "express-async-errors";
 import cors from "cors";
+import "express-async-errors";
+import jobs from "./routes/jobPost.js";
 import { connectDB } from "./db/database.js";
+const app = express();
+try {
+  await connectDB();
+  console.log("DB connected");
+} catch (error) {
+  console.log(error);
+}
 
-const StartServer = async () => {
-  try {
-    await connectDB();
-    console.log("DB connected");
+app.use(express.json());
+app.use(cors());
+app.use("/jobs", jobs);
 
-    const app = express();
-    app.use(express.json());
-    app.use(cors());
-
-    app.use("/jobs", jobs);
-
-    app.listen(config.host.port, () => {
-      console.log(`Server listning on port ${config.host.port}`);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-StartServer();
+export default app;

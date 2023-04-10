@@ -36,7 +36,7 @@ function createJobSeekerMessage(data) {
   return {
     from: "JobFinder-Notification@jobfinder.com",
     to: `2d8ee7c3f3-1594a1+${data.applicantEmail}@inbox.mailtrap.io`,
-    subject: `You're Moving Forware: Your CV is Submitted`,
+    subject: `You're Moving Forware: Your CV has been submitted`,
     html: dom.serialize(),
   };
 }
