@@ -35,7 +35,7 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 pwd
 cd job-management
-echo $PATH
+export PATH=/home/ubuntu/.nvm/versions/node/18.15.0/bin:$PATH
 node -v
 npm i && npm test'''
       }
