@@ -51,7 +51,7 @@ sudo docker images'''
 
     stage('Log into docker hub') {
       steps {
-        sh '''sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+        sh '''sudo docker login -u ${DOCKER_ID} -p ${DOCKER_PASS}
 '''
       }
     }
