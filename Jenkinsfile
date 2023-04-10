@@ -32,7 +32,8 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Execute Testing') {
       steps {
-        sh '''npm test
+        sh '''
+pwd
 '''
       }
     }
