@@ -35,7 +35,8 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 pwd
 cd job-management
-ls -al'''
+npm install
+npm test'''
       }
     }
 
