@@ -38,6 +38,8 @@ cd job-management
 export PATH=/home/ubuntu/.nvm/versions/node/18.15.0/bin:$PATH
 sudo chmod +x /home/ubuntu/.nvm/versions/node/v18.15.0/bin/node
 sudo chown jenkins:jenkins /home/ubuntu/.nvm/versions/node/v18.15.0/bin/node
+sudo chmod +x /home/ubuntu/.nvm/versions/node/v18.15.0/bin/npm
+sudo chown jenkins:jenkins /home/ubuntu/.nvm/versions/node/v18.15.0/bin/npm
 npm i'''
       }
     }
