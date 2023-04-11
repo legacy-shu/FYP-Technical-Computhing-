@@ -33,7 +33,6 @@ cat ./microservices/api-gateway/.env'''
     stage('Job-Management Test') {
       steps {
         sh '''cd microservices
-pwd
 cd job-management
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
