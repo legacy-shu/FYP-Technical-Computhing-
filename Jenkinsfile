@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label '19.0.0'
+    }
+
+  }
   stages {
     stage('Checkout Code') {
       steps {
