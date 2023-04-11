@@ -37,7 +37,8 @@ pwd
 cd job-management
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install 18.15.0
+source /home/jenkins/.nvm/nvm.sh
+nvm use 18.15.0
 node -v
 
 '''
