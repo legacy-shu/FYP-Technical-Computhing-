@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    nodejs '19.0.0'
+  }
   stages {
     stage('Checkout Code') {
       steps {
@@ -76,8 +79,5 @@ sudo docker compose up -d'''
       }
     }
 
-  }
-  tools {
-    nodejs '19.0.0'
   }
 }
