@@ -37,6 +37,7 @@ pwd
 cd job-management
 node --version
 npm i'''
+        tool 'nodejs'
       }
     }
 
