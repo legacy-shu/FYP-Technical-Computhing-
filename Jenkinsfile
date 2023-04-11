@@ -34,7 +34,7 @@ cat ./microservices/api-gateway/.env'''
       steps {
         sh '''cd microservices
 cd job-management
-node -v
+npm i && npm test
 
 '''
       }
