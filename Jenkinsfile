@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    nodejs '19.0.0'
+  }
   stages {
     stage('Checkout Code') {
       steps {
@@ -28,9 +31,6 @@ cat ./microservices/notification-management/.env
 cp /var/lib/jenkins/workspace/env/microservices/api-gateway/.env ./microservices/api-gateway/.env
 cat ./microservices/api-gateway/.env'''
       }
-    }
-    tools{
-      nodejs '19.0.0'
     }
     stage('Job-Management Test') {
       steps {
