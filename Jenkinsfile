@@ -35,9 +35,8 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 pwd
 cd job-management
-node --version
-npm --version
-npm i && npm test'''
+command -v nvm
+'''
       }
     }
 
