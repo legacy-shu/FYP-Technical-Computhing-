@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    nodejs '19.0.0'
-  }
   stages {
     stage('Checkout Code') {
       steps {
@@ -32,6 +29,7 @@ cp /var/lib/jenkins/workspace/env/microservices/api-gateway/.env ./microservices
 cat ./microservices/api-gateway/.env'''
       }
     }
+
     stage('Job-Management Test') {
       steps {
         sh '''cd microservices
@@ -78,5 +76,8 @@ sudo docker compose up -d'''
       }
     }
 
+  }
+  tools {
+    nodejs '19.0.0'
   }
 }
