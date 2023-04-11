@@ -32,6 +32,7 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Execute Testing') {
       steps {
+        tool 'node'
         sh '''cd microservices
 pwd
 cd job-management
