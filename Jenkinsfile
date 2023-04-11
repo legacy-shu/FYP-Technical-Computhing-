@@ -29,15 +29,13 @@ cp /var/lib/jenkins/workspace/env/microservices/api-gateway/.env ./microservices
 cat ./microservices/api-gateway/.env'''
       }
     }
-
+    tools{
+      nodejs '19.0.0'
+    }
     stage('Job-Management Test') {
       steps {
         sh '''cd microservices
 cd job-management
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-. /home/jenkins/.nvm/nvm.sh
-nvm use 18.15.0
 node -v
 
 '''
