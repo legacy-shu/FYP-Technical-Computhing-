@@ -32,7 +32,7 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Execute Testing') {
       steps {
-        tool '19.0.0'
+        tool(type: 'nodejs', name: '19.0.0')
         sh '''cd microservices
 pwd
 cd job-management
