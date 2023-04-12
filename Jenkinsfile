@@ -38,6 +38,8 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 cd job-management
 npm i
+sudo find / -name "libcrypto.so.1.1"
+npm test
 
 '''
       }
