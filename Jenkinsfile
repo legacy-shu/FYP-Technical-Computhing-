@@ -39,6 +39,7 @@ cat ./microservices/api-gateway/.env'''
 cd job-management
 npm i
 sudo find / -name "libcrypto.so.1.1"
+sudo apt-get install libssl-dev
 npm test
 
 '''
