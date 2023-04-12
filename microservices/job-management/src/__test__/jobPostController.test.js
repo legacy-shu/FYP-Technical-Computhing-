@@ -14,7 +14,7 @@ describe("jobPostController", () => {
   });
   afterAll(async () => {
     await mongoose.disconnect();
-    // await mongoServer.close();
+    await mongoServer.stop();
   });
 
   describe("registerJobPosting", () => {
