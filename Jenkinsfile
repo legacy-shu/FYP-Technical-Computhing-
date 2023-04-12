@@ -37,10 +37,11 @@ cat ./microservices/api-gateway/.env'''
       steps {
         sh '''cd microservices
 cd job-management
-npm i
-sudo find / -name "libcrypto.so.1.1"
 sudo apt-get install libssl-dev
-export LD_LIBRARY_PATH=/path/to/libcrypto.so.1.1:$LD_LIBRARY_PATH
+sudo apt-get update
+sudo apt-get upgrade
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
+npm i
 npm test
 
 '''
