@@ -40,6 +40,7 @@ cd job-management
 npm i
 sudo find / -name "libcrypto.so.1.1"
 sudo apt-get install libssl-dev
+export LD_LIBRARY_PATH=/path/to/libcrypto.so.1.1:$LD_LIBRARY_PATH
 npm test
 
 '''
