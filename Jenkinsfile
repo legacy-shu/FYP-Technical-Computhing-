@@ -38,8 +38,6 @@ cat ./microservices/api-gateway/.env'''
         sh '''cd microservices
 cd job-management
 sudo apt-get install libssl-dev
-sudo apt-get update
-sudo apt-get upgrade
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
 npm i
 npm test
