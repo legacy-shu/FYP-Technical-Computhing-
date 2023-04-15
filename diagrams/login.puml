@@ -1,0 +1,14 @@
+@startuml login
+title Login
+autonumber
+actor User #Red
+participant APIGateway
+participant User_Service
+participant User_Service_DB
+User -> APIGateway: Login Request
+APIGateway -> User_Service:Pass to User_Service
+User_Service -> User_Service_DB: Check if the user is a registered user or not
+User_Service_DB --> User_Service: Ok or Error
+User_Service --> APIGateway: Ok or Error(If OK=Create Token)
+APIGateway --> User: Response Ok with token or Error
+@enduml

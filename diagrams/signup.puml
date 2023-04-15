@@ -1,0 +1,14 @@
+@startuml signup
+title Signup
+autonumber
+actor User #Red
+participant APIGateway
+participant User_Service
+participant User_Service_DB
+User -> APIGateway:Sign Up Request
+APIGateway -> User_Service:Pass to User_Service
+User_Service -> User_Service_DB: Register User
+User_Service_DB --> User_Service: Ok or Error
+User_Service --> APIGateway: Ok or Error(If OK=Create Token)
+APIGateway --> User: Response Ok with token or Error
+@enduml
