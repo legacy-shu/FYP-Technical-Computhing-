@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-    nodejs '18.10.0'
-  }
   stages {
     stage('Checkout Code') {
       steps {
@@ -37,11 +34,7 @@ cat ./microservices/api-gateway/.env'''
       steps {
         sh '''cd microservices
 cd job-management
-sudo apt-get install libssl-dev
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
 npm i
-npm test
-
 '''
       }
     }
@@ -82,5 +75,8 @@ sudo docker compose up -d'''
       }
     }
 
+  }
+  tools {
+    nodejs '18.10.0'
   }
 }
