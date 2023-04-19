@@ -62,7 +62,7 @@ export default function Login({ service }) {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://picsum.photos)",
+            backgroundImage: "url(https://picsum.photos/200/300​)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
