@@ -38,8 +38,14 @@ The following services are used in the Docker Compose architecture:
 Each microservice is built from source code located in their respective directories and configured to run on a specific port. They also depend on other microservices and services to function properly.
 
 ### Note 
-The Env files are not included. The building of this project needs env files
+>The Env files are not included. The building of this project needs env files
 
 ### Demo link
-* http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000/
-* http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080/ (guest/guest)
+>http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000/
+
+>Job Provider: [jobprovider@test.com] / [password]
+
+>Job Seeker: [jobseeker@test.com] / [password]
+### Demo pipeline link
+
+> http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080/ (guest/guest)
