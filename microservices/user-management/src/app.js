@@ -20,7 +20,7 @@ const StartServer = async () => {
 
     app.listen(config.host.port, () => {
       console.log(`Server listning on port ${config.host.port}`);
-      generateFakeUsersAndProfiles(30);
+      //generateFakeUsersAndProfiles(30);
     });
   } catch (err) {
     console.log(err);
