@@ -26,18 +26,20 @@ The project also includes a CI/CD pipeline to automate testing, building, and de
 ### Docker Compose Architecture
 The following services are used in the Docker Compose architecture:
 
-user-db: This service provides a MongoDB database for the user management microservice.
-job-db: This service provides a MongoDB database for the job management microservice.
-rabbitmq: This service provides a RabbitMQ message broker, which is used to facilitate communication between the different microservices.
-frontend: This service provides the web-based user interface for the application.
-api-gateway: This service serves as the main entry point for the application, handling requests from the frontend and routing them to the appropriate microservices.
-notification-service: This service handles notifications sent from the job-service microservice to users.
-job-service: This service provides functionality for managing job postings.
-user-service: This service provides functionality for managing user accounts.
+* user-db: This service provides a MongoDB database for the user management microservice.
+* job-db: This service provides a MongoDB database for the job management microservice.
+* rabbitmq: This service provides a RabbitMQ message broker, which is used to facilitate communication between the different microservices.
+* frontend: This service provides the web-based user interface for the application.
+* api-gateway: This service serves as the main entry point for the application, handling requests from the frontend and routing them to the appropriate microservices.
+* notification-service: This service handles notifications sent from the job-service microservice to users.
+* job-service: This service provides functionality for managing job postings.
+* user-service: This service provides functionality for managing user accounts.
+
 Each microservice is built from source code located in their respective directories and configured to run on a specific port. They also depend on other microservices and services to function properly.
 
 ### Note 
 The Env files are not included. The building of this project needs env files
 
 ### Demo link
-http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000/
+* http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000/
+* http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080/ (guest/guest)
