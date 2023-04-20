@@ -5,15 +5,32 @@ import { hash } from "bcrypt";
 import axios from "axios";
 const URI = config.seed.url;
 export const generateFakeUsersAndProfiles = async (datacount) => {
-  // await User.deleteMany({});
-  // await Profile.deleteMany({});
+  await User.deleteMany({});
+  await Profile.deleteMany({});
   const users = [];
   const profiles = [];
   const postings = [];
   try {
     for (let i = 0; i < datacount; i++) {
       const random = i % 3 == 0 ? true : false;
-      users.push(
+      let user;
+      if(i == 0){
+        new User({
+          email: "provider@test.com",
+          password: await hash("password", config.bcrypt.saltRounds),
+          role: {
+            provider: random,
+          },
+        })
+      } else if(i == 1){
+        new User({
+          email: "seeker@test.com",
+          password: await hash("password", config.bcrypt.saltRounds),
+          role: {
+            provider: random,
+          },
+        })
+      } else{
         new User({
           email: faker.internet.email().toLowerCase(),
           password: await hash("password", config.bcrypt.saltRounds),
@@ -21,7 +38,8 @@ export const generateFakeUsersAndProfiles = async (datacount) => {
             provider: random,
           },
         })
-      );
+      }
+      users.push(user);
     }
     console.log("fake data inserting to database...");
     await User.insertMany(users);
