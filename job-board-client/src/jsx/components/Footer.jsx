@@ -54,7 +54,7 @@ export default function Footer() {
             component="h1"
             gutterBottom
           >
-            Job-Board Web Application Project
+            Job-Board Web Application
           </Typography>
           <Typography
             sx={{ fontWeight: "bold" }}
