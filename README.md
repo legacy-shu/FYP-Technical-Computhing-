@@ -1,5 +1,5 @@
 # Final Year Project (Technical Computing)
-## A Job-board Web Application using Microservice-Oriented 
+## A Job-board Web Application which using Microservice-Oriented Architecture
 
 ### Introduction
 This project aims to develop a job posting platform using microservice-oriented architecture. The system consists of three microservices: User Management Service, Job Listing Management Service, and Notification Management Service. The project also includes a CI/CD pipeline to automate testing, building, and deploying using Kubernetes and Docker containers.
