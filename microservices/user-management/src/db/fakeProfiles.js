@@ -5,8 +5,8 @@ import { hash } from "bcrypt";
 import axios from "axios";
 const URI = config.seed.url;
 export const generateFakeUsersAndProfiles = async (datacount) => {
-  await User.deleteMany({});
-  await Profile.deleteMany({});
+  // await User.deleteMany({});
+  // await Profile.deleteMany({});
   const users = [];
   const profiles = [];
   const postings = [];
