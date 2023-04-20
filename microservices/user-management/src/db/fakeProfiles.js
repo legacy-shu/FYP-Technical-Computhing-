@@ -13,33 +13,23 @@ export const generateFakeUsersAndProfiles = async (datacount) => {
   try {
     for (let i = 0; i < datacount; i++) {
       const random = i % 3 == 0 ? true : false;
-      let user;
-      if(i == 0){
-        new User({
-          email: "provider@test.com",
-          password: await hash("password", config.bcrypt.saltRounds),
-          role: {
-            provider: random,
-          },
-        })
-      } else if(i == 1){
-        new User({
-          email: "seeker@test.com",
-          password: await hash("password", config.bcrypt.saltRounds),
-          role: {
-            provider: random,
-          },
-        })
-      } else{
-        new User({
-          email: faker.internet.email().toLowerCase(),
-          password: await hash("password", config.bcrypt.saltRounds),
-          role: {
-            provider: random,
-          },
-        })
+      let email;
+      if (i == 0) {
+        email = "jobprovider@test.com"
+      } else if (i == 1) {
+        email = "jobseeker@test.com"
+      } else {
+        email = faker.internet.email().toLowerCase()
       }
-      users.push(user);
+      users.push(
+        new User({
+          email: email,
+          password: await hash("password", config.bcrypt.saltRounds),
+          role: {
+            provider: random,
+          },
+        })
+      );
     }
     console.log("fake data inserting to database...");
     await User.insertMany(users);
