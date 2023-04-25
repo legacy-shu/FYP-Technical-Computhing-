@@ -45,9 +45,9 @@ Each microservice is built from source code located in their respective director
 ### Demo link
 >[Click to View](http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000)
 
->Job Provider: [ID: jobprovider@test.com] / [Password: password]
+>Job Provider: [ID: jobprovider<span>@</span>test.com] / [Password: password]
 
->Job Seeker: [ID: jobseeker@test.com] / [Password: password]
+>Job Seeker: [ID: jobseeker<span>@</span>test.com] / [Password: password]
 ### Demo pipeline link
 
 > [Click to View](http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080)
