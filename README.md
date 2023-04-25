@@ -23,6 +23,8 @@ Job Listing Management Service: This microservice makes it easy for job seekers 
 Notification Management Service: This microservice sends notifications regarding application status updates, such as when a new job is posted, and the employers accept the application from the job seeker.
 The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
+### Architecture Overview
+![image](https://drive.google.com/uc?export=view&id=1g9M5tUBVJyQFEMBEIE6ygeaBQHuZcat7)
 ### Docker Compose Architecture
 The following services are used in the Docker Compose architecture:
 
@@ -41,11 +43,15 @@ Each microservice is built from source code located in their respective director
 >The Env files are not included. The building of this project needs env files
 
 ### Demo link
->http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000/
+>[Click to View](http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:3000)
 
->Job Provider: [jobprovider@test.com] / [password]
+>Job Provider: [ID: jobprovider@test.com] / [Password: password]
 
->Job Seeker: [jobseeker@test.com] / [password]
+>Job Seeker: [ID: jobseeker@test.com] / [Password: password]
 ### Demo pipeline link
 
-> http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080/ (guest/guest)
+> [Click to View](http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080)
+[guest / guest]
+
+### Repot
+> [Click to View](https://docs.google.com/document/d/1gRbSElXjz6TRIvNsTood9uDyy_iebAxq/edit?usp=share_link&ouid=106128669265825572720&rtpof=true&sd=true)
