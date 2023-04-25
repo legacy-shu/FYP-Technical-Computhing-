@@ -24,7 +24,7 @@ Notification Management Service: This microservice sends notifications regarding
 The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
 ### Architecture Overview
-![image](https://drive.google.com/uc?export=view&id=1g9M5tUBVJyQFEMBEIE6ygeaBQHuZcat7)
+![image](https://drive.google.com/uc?export=view&id=1pE-K7MZcr6m9RGZ9h8hJpoLIsMCrdvD4)
 ### Docker Compose Architecture
 The following services are used in the Docker Compose architecture:
 
