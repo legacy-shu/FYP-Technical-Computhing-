@@ -7,7 +7,7 @@ This project aims to develop a job posting platform using microservice-oriented 
 ### Background
 The job search industry has been evolving, and many companies have been adopting the practice of releasing software early, which has generally been labeled Continuous Delivery. The concept of Continuous Delivery has evolved and further built upon to create what is now known as DevOps. DevOps aims to minimize the duration between making a modification to a system and implementing the modification in the standard production process, all while upholding superior quality.
 
-Microservice Architecture has become popular in the DevOps practice as it allows DevOps teams to develop independent pieces of functionality in parallel and provide scalability, flexibility, and efficient development. Docker is highly adopted as a containerized tool for building, packaging, and deploying applications in a microservice architecture. Furthermore, Kubernetes is highly adopted as a container orchestration system for automating software deployment, scaling, and management.
+Microservice Architecture has become popular in the DevOps practice as it allows DevOps teams to develop independent pieces of functionality in parallel and provide scalability, flexibility, and efficient development. Docker is highly adopted as a containerized tool for building, packaging, and deploying applications in a microservice architecture.
 
 ### Objectives
 The objectives of this project are:
