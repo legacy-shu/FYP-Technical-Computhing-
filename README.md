@@ -21,7 +21,7 @@ The system consists of three microservices:
 User Management Service: This microservice verifies job seekers and employers and stores information such as name, email, phone number, and resumes.
 Job Listing Management Service: This microservice makes it easy for job seekers to find job listings and easy for employers to post their job openings.
 Notification Management Service: This microservice sends notifications regarding application status updates, such as when a new job is posted, and the employers accept the application from the job seeker.
-The project also includes a CI/CD pipeline to automate testing, building, and deploying using Kubernetes and Docker containers.
+The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
 ### Docker Compose Architecture
 The following services are used in the Docker Compose architecture:
