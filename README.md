@@ -2,7 +2,7 @@
 ## A Job-board Web Application which using Microservice-Oriented Architecture
 
 ### Introduction
-This project aims to develop a job posting platform using microservice-oriented architecture. The system consists of three microservices: User Management Service, Job Listing Management Service, and Notification Management Service. The project also includes a CI/CD pipeline to automate testing, building, and deploying using Kubernetes and Docker containers.
+This project aims to develop a job posting platform using microservice-oriented architecture. The system consists of three microservices: User Management Service, Job Listing Management Service, and Notification Management Service. The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
 ### Background
 The job search industry has been evolving, and many companies have been adopting the practice of releasing software early, which has generally been labeled Continuous Delivery. The concept of Continuous Delivery has evolved and further built upon to create what is now known as DevOps. DevOps aims to minimize the duration between making a modification to a system and implementing the modification in the standard production process, all while upholding superior quality.
