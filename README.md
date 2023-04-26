@@ -48,6 +48,8 @@ Each microservice is built from source code located in their respective director
 >Job Provider: [ID: jobprovider<span>@</span>test.com] / [Password: password]
 
 >Job Seeker: [ID: jobseeker<span>@</span>test.com] / [Password: password]
+
+>[Sample CV](https://drive.google.com/file/d/1mmgay_VC5vkAQXiw-6wUqHVfxn0JxMw0/view?usp=share_link)
 ### Demo pipeline link
 
 > [Click to View](http://ec2-13-49-41-140.eu-north-1.compute.amazonaws.com:8080)
