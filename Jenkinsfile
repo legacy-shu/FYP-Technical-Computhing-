@@ -32,9 +32,7 @@ cat ./microservices/api-gateway/.env'''
 
     stage('Job-Management Test') {
       steps {
-        sh '''cd microservices
-cd job-management
-npm i
+        sh '''ls -al
 '''
       }
     }
