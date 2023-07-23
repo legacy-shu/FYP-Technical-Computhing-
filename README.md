@@ -12,15 +12,18 @@ Microservice Architecture has become popular in the DevOps practice as it allows
 ### Objectives
 The objectives of this project are:
 
-To design a job-board web application with a defined software engineering process.
-To implement a Microservice-based Job-board Web Application consisting of the three microservices mentioned above.
-To implement a CI/CD Pipeline using Jenkins for DevOps practice.
+* To design a job-board web application with a defined software engineering process.
+* To implement a Microservice-based Job-board Web Application consisting of the three microservices mentioned above.
+* To implement a CI/CD Pipeline using Jenkins for DevOps practice.
 System Architecture
 The system consists of three microservices:
 
 User Management Service: This microservice verifies job seekers and employers and stores information such as name, email, phone number, and resumes.
+
 Job Listing Management Service: This microservice makes it easy for job seekers to find job listings and easy for employers to post their job openings.
+
 Notification Management Service: This microservice sends notifications regarding application status updates, such as when a new job is posted, and the employers accept the application from the job seeker.
+
 The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
 ### Architecture Overview
@@ -43,17 +46,18 @@ Each microservice is built from source code located in their respective director
 >The Env files are not included. The building of this project needs env files
 
 ### Demo link
->[Click to View](ec2-16-16-216-183.eu-north-1.compute.amazonaws.com:3000)
+[Click to View](ec2-16-170-210-93.eu-north-1.compute.amazonaws.com:3000)
 
->Job Provider: [ID: jobprovider<span>@</span>test.com] / [Password: password]
+* Job Provider: [ID: jobprovider<span>@</span>test.com] / [Password: password]
 
->Job Seeker: [ID: jobseeker<span>@</span>test.com] / [Password: password]
+* Job Seeker: [ID: jobseeker<span>@</span>test.com] / [Password: password]
 
->[Sample CV](https://drive.google.com/file/d/1mmgay_VC5vkAQXiw-6wUqHVfxn0JxMw0/view?usp=share_link)
+[Sample CV](https://drive.google.com/file/d/1mmgay_VC5vkAQXiw-6wUqHVfxn0JxMw0/view?usp=share_link)
 ### Demo pipeline link
 
-> [Click to View](ec2-16-16-216-183.eu-north-1.compute.amazonaws.com:8080)
-[guest / guest]
+ [Click to View](ec2-16-170-210-93.eu-north-1.compute.amazonaws.com:8080)
+
+* [guest / guest]
 
 ### Repot
-> [Click to View](https://drive.google.com/file/d/1RK-hnsQcMMPgBTMKSmWrBG2krf0mWYXJ/view?usp=share_link)
+[Click to View](https://drive.google.com/file/d/1RK-hnsQcMMPgBTMKSmWrBG2krf0mWYXJ/view?usp=share_link)

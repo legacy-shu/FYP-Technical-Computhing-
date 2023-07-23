@@ -58,7 +58,7 @@ services:
       - frontend
     restart: always
     environment:
-      - REACT_APP_API_BASE=http://ec2-16-16-216-183.eu-north-1.compute.amazonaws.com:8000
+      - REACT_APP_API_BASE=https://ec2-16-170-210-93.eu-north-1.compute.amazonaws.com:8000
 
   api-gateway:
     # platform: linux/amd64
