@@ -12,17 +12,19 @@ Microservice Architecture has become popular in the DevOps practice as it allows
 ### Objectives
 The objectives of this project are:
 
-* To design a job-board web application with a defined software engineering process.
-* To implement a Microservice-based Job-board Web Application consisting of the three microservices mentioned above.
-* To implement a CI/CD Pipeline using Jenkins for DevOps practice.
+To design a job-board web application with a defined software engineering process.
+
+To implement a Microservice-based Job-board Web Application consisting of the three microservices mentioned above.
+
+To implement a CI/CD Pipeline using Jenkins for DevOps practice.
 System Architecture
 The system consists of three microservices:
 
-User Management Service: This microservice verifies job seekers and employers and stores information such as name, email, phone number, and resumes.
+* User Management Service: This microservice verifies job seekers and employers and stores information such as name, email, phone number, and resumes.
 
-Job Listing Management Service: This microservice makes it easy for job seekers to find job listings and easy for employers to post their job openings.
+* Job Listing Management Service: This microservice makes it easy for job seekers to find job listings and easy for employers to post their job openings.
 
-Notification Management Service: This microservice sends notifications regarding application status updates, such as when a new job is posted, and the employers accept the application from the job seeker.
+* Notification Management Service: This microservice sends notifications regarding application status updates, such as when a new job is posted, and the employers accept the application from the job seeker.
 
 The project also includes a CI/CD pipeline to automate testing, building, and deploying using Docker containers.
 
