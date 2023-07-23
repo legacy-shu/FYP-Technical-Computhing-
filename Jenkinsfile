@@ -37,17 +37,17 @@ cat ./microservices/api-gateway/.env'''
       }
     }
 
-    stage('Build') {
-      steps {
-        sh '''sudo docker compose build
-sudo docker images'''
-      }
-    }
-
-    stage('Log into docker hub') {
+    stage('Login') {
       steps {
         sh '''sudo docker login -u ${DOCKER_ID} -p ${DOCKER_PASS}
 '''
+      }
+    }
+
+    stage('Build Images') {
+      steps {
+        sh '''sudo docker compose build
+sudo docker images'''
       }
     }
 
