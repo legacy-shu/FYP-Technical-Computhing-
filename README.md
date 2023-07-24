@@ -48,7 +48,7 @@ Each microservice is built from source code located in their respective director
 >The Env files are not included. The building of this project needs env files
 
 ### Demo link
-[Click to View](https://ec2-13-50-251-216.eu-north-1.compute.amazonaws.com:3000)
+[Click to View](http://ec2-13-50-251-216.eu-north-1.compute.amazonaws.com:3000)
 
 * Job Provider: [ID: jobprovider<span>@</span>test.com] / [Password: password]
 
@@ -57,7 +57,7 @@ Each microservice is built from source code located in their respective director
 [Sample CV](https://drive.google.com/file/d/1mmgay_VC5vkAQXiw-6wUqHVfxn0JxMw0/view?usp=share_link)
 ### Demo pipeline link
 
- [Click to View](https://ec2-13-50-251-216.eu-north-1.compute.amazonaws.com:8080)
+ [Click to View](http://ec2-13-50-251-216.eu-north-1.compute.amazonaws.com:8080)
 
 * [guest / guest]
 
